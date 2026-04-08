@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Award, Shield, Leaf, ChevronRight, Factory, Clock, CheckCircle2, Quote } from 'lucide-react'
+import { ArrowRight, Award, Shield, Leaf, ChevronRight, Factory, Clock, CheckCircle2, Quote, Zap, Globe, Users } from 'lucide-react'
 import { useInView } from 'react-intersection-observer'
 import { company } from '../data/company'
 import { productCategories, newArrivals, newsItems } from '../data/products'

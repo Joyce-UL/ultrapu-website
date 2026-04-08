@@ -26,8 +26,8 @@ export default {
           dark: '#E5B800',
         },
         surface: {
-          dark: '#1a1a1a',
-          card: '#262626',
+          dark: '#1A1A1A',
+          card: '#FFFFFF',
           border: '#404040',
         }
       },
