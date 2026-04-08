@@ -3,17 +3,17 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 const LanguageContext = createContext()
 
 export const languages = [
-  { code: 'zh', name: '中文', flag: '🇨🇳' },
-  { code: 'en', name: 'English', flag: '🇺🇸' },
-  { code: 'ko', name: '한국어', flag: '🇰🇷' },
-  { code: 'ja', name: '日本語', flag: '🇯🇵' },
-  { code: 'vi', name: 'Tiếng Việt', flag: '🇻🇳' },
-  { code: 'id', name: 'Bahasa Indonesia', flag: '🇮🇩' },
-  { code: 'ur', name: 'اردو', flag: '🇵🇰' },
-  { code: 'fr', name: 'Français', flag: '🇫🇷' },
-  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-  { code: 'es', name: 'Español', flag: '🇪🇸' },
-  { code: 'ru', name: 'Русский', flag: '🇷🇺' },
+  { code: 'zh', name: '中文', flag: '🇨🇳', native: '中文' },
+  { code: 'en', name: 'English', flag: '🇺🇸', native: 'English' },
+  { code: 'ko', name: '한국어', flag: '🇰🇷', native: '한국어' },
+  { code: 'ja', name: '日本語', flag: '🇯🇵', native: '日本語' },
+  { code: 'vi', name: 'Tiếng Việt', flag: '🇻🇳', native: 'Tiếng Việt' },
+  { code: 'id', name: 'Bahasa Indonesia', flag: '🇮🇩', native: 'Bahasa Indonesia' },
+  { code: 'ur', name: 'اردو', flag: '🇵🇰', native: 'اردو' },
+  { code: 'fr', name: 'Français', flag: '🇫🇷', native: 'Français' },
+  { code: 'de', name: 'Deutsch', flag: '🇩🇪', native: 'Deutsch' },
+  { code: 'es', name: 'Español', flag: '🇪🇸', native: 'Español' },
+  { code: 'ru', name: 'Русский', flag: '🇷🇺', native: 'Русский' },
 ]
 
 export const translations = {
