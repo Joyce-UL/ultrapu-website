@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #C9A96E #1a1a18;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1a1a18;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #C9A96E;
+    border-radius: 3px;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #ffffff;
+    color: #1a1a18;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #C9A96E;
+    color: #111110;
+  }
+}
+
+@layer components {
+  .section-dark {
+    @apply bg-primary-950 text-white;
+  }
+
+  .section-light {
+    @apply bg-white text-primary-950;
+  }
+
+  .section-surface {
+    @apply bg-surface-card text-white;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-accent text-primary-950 font-semibold rounded-lg hover:bg-accent-light transition-all duration-300 hover:scale-105 active:scale-95;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 border-2 border-accent text-accent font-semibold rounded-lg hover:bg-accent hover:text-primary-950 transition-all duration-300;
+  }
+
+  .btn-outline-white {
+    @apply inline-flex items-center gap-2 px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary-950 transition-all duration-300;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent via-accent-light to-accent bg-clip-text text-transparent;
+  }
+
+  .heading-xl {
+    @apply font-display font-bold tracking-tight leading-tight;
+  }
+
+  .heading-lg {
+    @apply font-display font-bold tracking-tight;
+  }
+
+  .heading-md {
+    @apply font-display font-semibold;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 hover:transform hover:scale-[1.02] hover:shadow-2xl;
+  }
+
+  .reveal-hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .line-accent {
+    @apply w-12 h-0.5 bg-accent;
+  }
+
+  .glass-dark {
+    @apply bg-primary-950/80 backdrop-blur-md border border-surface-border;
+  }
+
+  .glass-light {
+    @apply bg-white/80 backdrop-blur-md border border-primary-200;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Smooth page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms ease-out, transform 400ms ease-out;
+}
+
+/* Hero gradient overlay */
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(10, 9, 6, 0.95) 0%,
+    rgba(17, 17, 16, 0.85) 50%,
+    rgba(17, 17, 16, 0.7) 100%
+  );
+}
+
+/* Card shine effect on hover */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 169, 110, 0.1),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.card-shine:hover::after {
+  left: 100%;
+}
+
+/* Texture pattern for leather feel */
+.texture-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A96E' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Swiper-like fade */
+.fade-transition {
+  transition: opacity 0.6s ease-in-out;
+}
