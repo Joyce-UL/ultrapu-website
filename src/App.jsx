@@ -10,14 +10,14 @@ import NewArrivals from './pages/NewArrivals'
 import Applications from './pages/Applications'
 import About from './pages/About'
 import Contact from './pages/Contact'
-import { LanguageProvider } from './contexts/LanguageContext'
+import { TranslationProvider } from './contexts/TranslationContext'
 import ProductDetail from './pages/ProductDetail'
 import Patterns from './pages/Patterns'
 import LanguageSwitcher from './components/LanguageSwitcher'
 
 export default function App() {
   return (
-    <LanguageProvider>
+    <TranslationProvider>
       <BrowserRouter>
         <div className="min-h-screen flex flex-col">
           <Navbar />
@@ -38,6 +38,6 @@ export default function App() {
           <ScrollToTop />
         </div>
       </BrowserRouter>
-    </LanguageProvider>
+    </TranslationProvider>
   )
 }

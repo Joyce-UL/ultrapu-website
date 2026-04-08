@@ -1,77 +1,100 @@
 import React from 'react'
-import { useLanguage, languages } from '../contexts/LanguageContext'
-import { Globe, ChevronDown, Check } from 'lucide-react'
+import { Globe, Check, ChevronDown } from 'lucide-react'
+import { useTranslation } from '../contexts/TranslationContext'
+import { languages } from '../translations/config'
 
 export default function LanguageSwitcher() {
-  const { lang, setLang } = useLanguage()
-  const [isOpen, setIsOpen] = React.useState(false)
-  const dropdownRef = React.useRef(null)
-  const currentLang = languages.find(l => l.code === lang)
-
-  // Close on click outside
-  React.useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
+  const {
+    currentLang,
+    currentLangInfo,
+    showDropdown,
+    setShowDropdown,
+    switchLanguage,
+    isTranslating,
+  } = useTranslation()
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative" ref={(el) => { this.dropdownRef = el }}>
+      {/* Toggle Button */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-200 text-sm font-medium"
-        style={{ minWidth: '140px' }}
+        onClick={() => setShowDropdown(!showDropdown)}
+        className={`
+          flex items-center gap-2 px-3 py-2 rounded-lg
+          bg-white/10 hover:bg-white/20 backdrop-blur-sm
+          border border-white/20 transition-all duration-200
+          text-sm font-medium min-w-[120px]
+        `}
+        disabled={isTranslating}
       >
-        <Globe size={16} className="text-white/80" />
-        <span className="text-base">{currentLang?.flag}</span>
-        <span className="flex-1 text-white">{currentLang?.name}</span>
-        <ChevronDown 
-          size={16} 
-          className={`text-white/60 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} 
-        />
+        {isTranslating ? (
+          <>
+            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+            <span>翻译中...</span>
+          </>
+        ) : (
+          <>
+            <Globe size={16} />
+            <span className="flex-1 text-left">{currentLangInfo.flag} {currentLangInfo.native}</span>
+            <ChevronDown
+              size={14}
+              className={`transition-transform duration-200 ${showDropdown ? 'rotate-180' : ''}`}
+            />
+          </>
+        )}
       </button>
 
-      {isOpen && (
-        <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden z-50 animate-fadeIn">
+      {/* Dropdown Menu */}
+      {showDropdown && (
+        <div
+          className={`
+            absolute right-0 mt-2 w-64 max-h-80 overflow-y-auto
+            bg-white rounded-xl shadow-2xl z-50
+            border border-gray-100
+            animate-fadeIn
+          `}
+          style={{ minWidth: '200px' }}
+        >
+          {/* Header */}
+          <div className="px-4 py-2 border-b border-gray-100 bg-gray-50/50">
+            <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">
+              选择语言 / Select Language
+            </span>
+          </div>
+
+          {/* Language List */}
           <div className="py-2">
-            {languages.map((language) => (
+            {languages.map((lang) => (
               <button
-                key={language.code}
-                onClick={() => {
-                  setLang(language.code)
-                  setIsOpen(false)
-                }}
-                className={`w-full flex items-center gap-3 px-4 py-2.5 text-left transition-colors ${
-                  lang === language.code 
-                    ? 'bg-primary-50 text-primary' 
-                    : 'text-gray-700 hover:bg-gray-50'
-                }`}
+                key={lang.code}
+                onClick={() => switchLanguage(lang.code)}
+                className={`
+                  w-full flex items-center gap-3 px-4 py-2.5
+                  hover:bg-gray-50 transition-colors duration-150
+                  ${currentLang === lang.code ? 'bg-primary/5' : ''}
+                `}
               >
-                <span className="text-xl w-8 text-center">{language.flag}</span>
-                <span className="flex-1 text-sm font-medium">{language.name}</span>
-                <span className="text-xs text-gray-400 mr-2">{language.native}</span>
-                {lang === language.code && (
+                <span className="text-xl">{lang.flag}</span>
+                <div className="flex-1 text-left">
+                  <div className={`font-medium ${currentLang === lang.code ? 'text-primary' : 'text-gray-800'}`}>
+                    {lang.native}
+                  </div>
+                  <div className="text-xs text-gray-500">{lang.name}</div>
+                </div>
+                {currentLang === lang.code && (
                   <Check size={16} className="text-primary" />
                 )}
               </button>
             ))}
           </div>
+
+          {/* Footer */}
+          <div className="px-4 py-2 border-t border-gray-100 bg-gray-50/50">
+            <span className="text-xs text-gray-400">
+              Powered by Google Translate
+            </span>
+          </div>
         </div>
       )}
-      
-      <style>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-8px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.15s ease-out;
-        }
-      `}</style>
     </div>
   )
 }
