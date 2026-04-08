@@ -89,6 +89,146 @@ export default function Home() {
       {/* Hero Section */}
       <Hero />
 
+      {/* ========== Scroll-Triggered Features Section ========== */}
+      <section className="relative py-24 lg:py-32 overflow-hidden">
+        {/* Glassmorphism background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-primary-50/50 via-white to-primary-50/30" />
+        <div className="absolute inset-0 backdrop-blur-xl" />
+        
+        {/* Decorative elements */}
+        <div className="absolute top-20 left-10 w-72 h-72 rounded-full bg-accent/5 blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-accent/3 blur-3xl" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Section Header */}
+          <AnimateSection className="text-center mb-16">
+            <span className="text-accent font-semibold text-sm tracking-[0.2em] uppercase mb-4 block">
+              Why Choose UltraPU
+            </span>
+            <h2 className="heading-xl text-3xl sm:text-4xl lg:text-5xl mb-4">
+              Core Advantages
+            </h2>
+            <div className="w-16 h-[2px] bg-accent rounded-full mx-auto mb-6" />
+            <p className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+              Partner with a manufacturer committed to quality, innovation, and customer success.
+            </p>
+          </AnimateSection>
+
+          {/* Features Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {/* Feature 1: Premium Quality */}
+            <AnimateSection delay={0} direction="left">
+              <div className="group relative h-full bg-white/70 backdrop-blur-md rounded-2xl p-8 border border-primary-100/50 shadow-sm hover:shadow-xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Shield size={28} className="text-accent" />
+                  </div>
+                  <h3 className="font-display font-bold text-xl mb-3 text-primary-950 group-hover:text-accent transition-colors">
+                    Premium Quality
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    Strict quality inspection on every production batch to ensure consistency and excellence.
+                  </p>
+                </div>
+              </div>
+            </AnimateSection>
+
+            {/* Feature 2: Custom Solutions */}
+            <AnimateSection delay={100} direction="up">
+              <div className="group relative h-full bg-white/70 backdrop-blur-md rounded-2xl p-8 border border-primary-100/50 shadow-sm hover:shadow-xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Award size={28} className="text-accent" />
+                  </div>
+                  <h3 className="font-display font-bold text-xl mb-3 text-primary-950 group-hover:text-accent transition-colors">
+                    Custom Solutions
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    Colors, thickness, and textures fully customizable to meet your specific requirements.
+                  </p>
+                </div>
+              </div>
+            </AnimateSection>
+
+            {/* Feature 3: Fast Delivery */}
+            <AnimateSection delay={200} direction="right">
+              <div className="group relative h-full bg-white/70 backdrop-blur-md rounded-2xl p-8 border border-primary-100/50 shadow-sm hover:shadow-xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Zap size={28} className="text-accent" />
+                  </div>
+                  <h3 className="font-display font-bold text-xl mb-3 text-primary-950 group-hover:text-accent transition-colors">
+                    Fast Delivery
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    Sample delivery within 5 business days. Fast production lead times for urgent orders.
+                  </p>
+                </div>
+              </div>
+            </AnimateSection>
+
+            {/* Feature 4: Global Logistics */}
+            <AnimateSection delay={300} direction="left">
+              <div className="group relative h-full bg-white/70 backdrop-blur-md rounded-2xl p-8 border border-primary-100/50 shadow-sm hover:shadow-xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Globe size={28} className="text-accent" />
+                  </div>
+                  <h3 className="font-display font-bold text-xl mb-3 text-primary-950 group-hover:text-accent transition-colors">
+                    Global Logistics
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    International shipping to 20+ countries with reliable logistics partners worldwide.
+                  </p>
+                </div>
+              </div>
+            </AnimateSection>
+
+            {/* Feature 5: Technical Support */}
+            <AnimateSection delay={400} direction="up">
+              <div className="group relative h-full bg-white/70 backdrop-blur-md rounded-2xl p-8 border border-primary-100/50 shadow-sm hover:shadow-xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Users size={28} className="text-accent" />
+                  </div>
+                  <h3 className="font-display font-bold text-xl mb-3 text-primary-950 group-hover:text-accent transition-colors">
+                    Technical Support
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    Professional R&D team providing technical consultation and product development support.
+                  </p>
+                </div>
+              </div>
+            </AnimateSection>
+
+            {/* Feature 6: Eco Certified */}
+            <AnimateSection delay={500} direction="right">
+              <div className="group relative h-full bg-white/70 backdrop-blur-md rounded-2xl p-8 border border-primary-100/50 shadow-sm hover:shadow-xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Leaf size={28} className="text-accent" />
+                  </div>
+                  <h3 className="font-display font-bold text-xl mb-3 text-primary-950 group-hover:text-accent transition-colors">
+                    Eco Certified
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    REACH, OEKO-Tex, and GRS certified products meeting international environmental standards.
+                  </p>
+                </div>
+              </div>
+            </AnimateSection>
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
       {/* ========== Products Preview ========== */}
       <section className="section-light py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
