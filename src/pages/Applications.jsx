@@ -51,7 +51,6 @@ export default function Applications() {
                       <span className="text-5xl">{app.image}</span>
                       <div>
                         <h2 className="heading-lg text-2xl sm:text-3xl">{app.name}</h2>
-                        <p className="text-gray-500">{app.zhName}</p>
                       </div>
                     </div>
                     <div className="line-accent mb-6" />

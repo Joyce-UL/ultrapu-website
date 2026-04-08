@@ -2,6 +2,48 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronRight, ArrowDown } from 'lucide-react'
 
+function AnimatedStat({ stat, delay }) {
+  const [count, setCount] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsVisible(true), delay)
+    return () => clearTimeout(timer)
+  }, [delay])
+
+  useEffect(() => {
+    if (!isVisible) return
+
+    const duration = 2000 // 2 seconds
+    const steps = 60
+    const increment = stat.value / steps
+    let current = 0
+
+    const timer = setInterval(() => {
+      current += increment
+      if (current >= stat.value) {
+        setCount(stat.value)
+        clearInterval(timer)
+      } else {
+        setCount(Math.floor(current))
+      }
+    }, duration / steps)
+
+    return () => clearInterval(timer)
+  }, [isVisible, stat.value])
+
+  return (
+    <div className="text-center">
+      <div className="heading-xl text-3xl sm:text-4xl lg:text-5xl text-white mb-2">
+        {count}{stat.suffix}
+      </div>
+      <div className="text-sm text-gray-400 font-medium tracking-wide uppercase">
+        {stat.label}
+      </div>
+    </div>
+  )
+}
+
 // Simplified, modern Hero component - B2B professional style
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false)
@@ -88,6 +130,20 @@ export default function Hero() {
             >
               Get a Quote
             </Link>
+          </div>
+
+          {/* Stats Section */}
+          <div className="mt-16 lg:mt-20">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+              {[
+                { value: 50, suffix: '+', label: 'Product Series' },
+                { value: 20, suffix: '+', label: 'Countries Served' },
+                { value: 200, suffix: '+', label: 'Global Clients' },
+
+              ].map((stat, i) => (
+                <AnimatedStat key={stat.label} stat={stat} delay={i * 100} />
+              ))}
+            </div>
           </div>
 
         </div>

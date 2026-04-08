@@ -76,45 +76,45 @@ export const company = {
   capabilities: [
     {
       title: "Premium Quality",
-      description: "精选原料，精密工艺，每一米皮革都经过严格质检",
+      description: "Premium raw materials, precision craftsmanship, every meter of leather undergoes strict quality inspection",
       icon: "award",
     },
     {
       title: "Custom Solutions",
-      description: "可根据客户需求定制颜色、厚度、手感及功能特性",
+      description: "Custom colors, thickness, texture, and functional properties based on client requirements",
       icon: "layers",
     },
     {
       title: "Technical Support",
-      description: "专业技术团队提供选材指导和使用建议",
+      description: "Professional technical team providing material selection guidance and usage recommendations",
       icon: "headphones",
     },
     {
       title: "Eco Certified",
-      description: "通过 REACH、OEKO-Tex、GRS 等国际环保认证",
+      description: "REACH, OEKO-Tex, GRS and other international environmental certifications",
       icon: "leaf",
     },
   ],
   values: [
     {
-      title: "品质卓越",
-      en: "Quality First",
-      desc: "以国际标准把控每一道工序，确保产品稳定可靠"
+      title: "Quality Excellence",
+      en: "Quality Excellence",
+      desc: "Controlling every process to international standards, ensuring stable and reliable products"
     },
     {
-      title: "创新驱动",
+      title: "Innovation Driven",
       en: "Innovation Driven", 
-      desc: "持续投入研发，探索皮革材料新技术与新应用"
+      desc: "Continuous R&D investment, exploring new technologies and applications in leather materials"
     },
     {
-      title: "客户为本",
+      title: "Customer First",
       en: "Customer Focused",
-      desc: "深入理解客户需求，提供量身定制的解决方案"
+      desc: "Deeply understanding customer needs, providing tailored solutions"
     },
     {
-      title: "绿色环保",
+      title: "Eco Responsibility",
       en: "Eco Responsible",
-      desc: "践行可持续发展，获得GRS等环保认证，推广再生材料"
+      desc: "Practicing sustainable development, obtaining GRS and other environmental certifications, promoting recycled materials"
     },
   ],
 };

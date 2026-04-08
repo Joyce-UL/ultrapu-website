@@ -135,8 +135,7 @@ export default function About() {
                   <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
                     <span className="text-3xl font-display font-bold text-accent">{i + 1}</span>
                   </div>
-                  <h3 className="font-display font-bold text-lg mb-1">{val.en}</h3>
-                  <p className="text-accent text-sm font-medium mb-2">{val.en}</p>
+                  <h3 className="font-display font-bold text-lg mb-1">{val.title}</h3>
                   <p className="text-gray-600 text-sm">{val.desc}</p>
                 </div>
               </AnimateSection>
