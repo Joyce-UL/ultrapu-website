@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Mail, Phone, MapPin, Youtube, Linkedin, Facebook, MessageCircle } from 'lucide-react'
+import { Mail, Phone, MapPin, Youtube, Linkedin, Facebook, MessageCircle, ArrowUpRight, ChevronRight } from 'lucide-react'
 import { company, socialLinks, navLinks } from '../data/company'
 
 export default function Footer() {
@@ -8,38 +8,99 @@ export default function Footer() {
 
   return (
     <footer className="bg-primary-950 text-white">
-      {/* Main footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Company Info */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-                <span className="font-display font-bold text-primary-950 text-lg">U</span>
+      {/* Newsletter / CTA band */}
+      <div className="border-b border-surface-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div>
+              <h3 className="font-display text-2xl lg:text-3xl font-bold text-white mb-2">
+                Let's Work Together
+              </h3>
+              <p className="text-gray-400 text-base">
+                Get free samples, technical consultation, or a customized quote.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3 shrink-0">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-primary-950 font-semibold rounded-xl hover:bg-accent-light transition-all hover:scale-[1.03]"
+              >
+                Get a Quote
+                <ArrowUpRight size={16} />
+              </Link>
+              <a
+                href={`mailto:${company.email}`}
+                className="inline-flex items-center gap-2 px-6 py-3 border-2 border-surface-border text-white font-semibold rounded-xl hover:bg-surface-card hover:border-surface-border transition-all"
+              >
+                <Mail size={16} />
+                Email Us
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main footer content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-10 lg:gap-8">
+          {/* Company Info - wider column */}
+          <div className="col-span-2 md:col-span-4 lg:col-span-4">
+            <Link to="/" className="flex items-center gap-3 mb-6 group">
+              <div className="w-11 h-11 bg-accent rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <span className="font-display font-bold text-primary-950 text-xl">U</span>
               </div>
               <div>
-                <div className="font-display font-bold text-lg">Ultra Leather</div>
-                <div className="text-xs text-gray-400">Premium Synthetic Leather</div>
+                <div className="font-display font-bold text-lg leading-tight">Ultra Leather</div>
+                <div className="text-xs text-gray-500">Premium Synthetic Leather</div>
               </div>
-            </div>
-            <p className="text-gray-400 text-sm leading-relaxed mb-4">
+            </Link>
+            <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-xs">
               {company.slogan.en}
             </p>
-            <p className="text-gray-500 text-xs leading-relaxed">
+            <p className="text-gray-600 text-xs leading-relaxed mb-6">
               {company.name.en}
             </p>
+
+            {/* Social Links */}
+            <div className="flex gap-2.5">
+              {socialLinks.youtube && (
+                <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-lg bg-surface-card border border-surface-border flex items-center justify-center hover:bg-accent hover:border-accent transition-all group">
+                  <Youtube size={15} className="text-gray-500 group-hover:text-primary-950 transition-colors" />
+                </a>
+              )}
+              {socialLinks.linkedin && (
+                <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-lg bg-surface-card border border-surface-border flex items-center justify-center hover:bg-accent hover:border-accent transition-all group">
+                  <Linkedin size={15} className="text-gray-500 group-hover:text-primary-950 transition-colors" />
+                </a>
+              )}
+              {socialLinks.facebook && (
+                <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-lg bg-surface-card border border-surface-border flex items-center justify-center hover:bg-accent hover:border-accent transition-all group">
+                  <Facebook size={15} className="text-gray-500 group-hover:text-primary-950 transition-colors" />
+                </a>
+              )}
+              {socialLinks.whatsapp && (
+                <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-lg bg-surface-card border border-surface-border flex items-center justify-center hover:bg-accent hover:border-accent transition-all group">
+                  <MessageCircle size={15} className="text-gray-500 group-hover:text-primary-950 transition-colors" />
+                </a>
+              )}
+            </div>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h4 className="font-display font-semibold mb-4 text-accent">Quick Links</h4>
-            <ul className="space-y-2">
+          <div className="lg:col-span-2">
+            <h4 className="font-display font-semibold mb-5 text-white text-sm tracking-wide uppercase">Quick Links</h4>
+            <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-gray-400 hover:text-accent transition-colors text-sm"
+                    className="text-gray-400 hover:text-accent transition-colors text-sm inline-flex items-center gap-1.5 group"
                   >
+                    <ChevronRight size={12} className="text-gray-600 group-hover:text-accent transition-colors" />
                     {link.label}
                   </Link>
                 </li>
@@ -48,9 +109,9 @@ export default function Footer() {
           </div>
 
           {/* Products */}
-          <div>
-            <h4 className="font-display font-semibold mb-4 text-accent">Products</h4>
-            <ul className="space-y-2">
+          <div className="lg:col-span-2">
+            <h4 className="font-display font-semibold mb-5 text-white text-sm tracking-wide uppercase">Products</h4>
+            <ul className="space-y-3">
               {[
                 'PU Leather',
                 'Microfiber Leather',
@@ -61,8 +122,9 @@ export default function Footer() {
                 <li key={p}>
                   <Link
                     to="/products"
-                    className="text-gray-400 hover:text-accent transition-colors text-sm"
+                    className="text-gray-400 hover:text-accent transition-colors text-sm inline-flex items-center gap-1.5 group"
                   >
+                    <ChevronRight size={12} className="text-gray-600 group-hover:text-accent transition-colors" />
                     {p}
                   </Link>
                 </li>
@@ -70,74 +132,52 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h4 className="font-display font-semibold mb-4 text-accent">Contact Us</h4>
-            <ul className="space-y-3">
+          {/* Contact Info */}
+          <div className="col-span-2 md:col-span-2 lg:col-span-4">
+            <h4 className="font-display font-semibold mb-5 text-white text-sm tracking-wide uppercase">Contact Us</h4>
+            <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Mail size={16} className="text-accent mt-0.5 shrink-0" />
-                <a href={`mailto:${company.email}`} className="text-gray-400 hover:text-accent transition-colors text-sm">
+                <div className="w-8 h-8 rounded-lg bg-surface-card border border-surface-border flex items-center justify-center shrink-0 mt-0.5">
+                  <Mail size={14} className="text-accent" />
+                </div>
+                <a href={`mailto:${company.email}`} className="text-gray-400 hover:text-accent transition-colors text-sm leading-relaxed pt-1">
                   {company.email}
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Phone size={16} className="text-accent mt-0.5 shrink-0" />
-                <div>
+                <div className="w-8 h-8 rounded-lg bg-surface-card border border-surface-border flex items-center justify-center shrink-0 mt-0.5">
+                  <Phone size={14} className="text-accent" />
+                </div>
+                <div className="pt-1">
                   <a href={`tel:${company.whatsapp}`} className="text-gray-400 hover:text-accent transition-colors text-sm block">
                     {company.whatsapp}
                   </a>
-                  <span className="text-gray-500 text-xs">{company.phone}</span>
+                  <span className="text-gray-600 text-xs">{company.phone}</span>
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin size={16} className="text-accent mt-0.5 shrink-0" />
-                <span className="text-gray-400 text-sm leading-relaxed">
+                <div className="w-8 h-8 rounded-lg bg-surface-card border border-surface-border flex items-center justify-center shrink-0 mt-0.5">
+                  <MapPin size={14} className="text-accent" />
+                </div>
+                <span className="text-gray-400 text-sm leading-relaxed pt-1">
                   {company.address.en}
                 </span>
               </li>
             </ul>
-
-            {/* Social */}
-            <div className="flex gap-3 mt-5">
-              {socialLinks.youtube && (
-                <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-surface-card border border-surface-border flex items-center justify-center hover:bg-accent hover:border-accent transition-all">
-                  <Youtube size={16} className="text-gray-400 hover:text-primary-950 transition-colors" />
-                </a>
-              )}
-              {socialLinks.linkedin && (
-                <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-surface-card border border-surface-border flex items-center justify-center hover:bg-accent hover:border-accent transition-all">
-                  <Linkedin size={16} className="text-gray-400 hover:text-primary-950 transition-colors" />
-                </a>
-              )}
-              {socialLinks.facebook && (
-                <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-surface-card border border-surface-border flex items-center justify-center hover:bg-accent hover:border-accent transition-all">
-                  <Facebook size={16} className="text-gray-400 hover:text-primary-950 transition-colors" />
-                </a>
-              )}
-              {socialLinks.whatsapp && (
-                <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-surface-card border border-surface-border flex items-center justify-center hover:bg-accent hover:border-accent transition-all">
-                  <MessageCircle size={16} className="text-gray-400 hover:text-primary-950 transition-colors" />
-                </a>
-              )}
-            </div>
           </div>
         </div>
       </div>
 
       {/* Bottom bar */}
       <div className="border-t border-surface-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-gray-500 text-xs">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-gray-600 text-xs">
             © {currentYear} {company.name.en}. All rights reserved.
           </p>
-          <div className="flex items-center gap-4 text-xs text-gray-500">
-            <span>Privacy Policy</span>
-            <span>|</span>
-            <span>Terms of Service</span>
+          <div className="flex items-center gap-4 text-xs text-gray-600">
+            <Link to="/about" className="hover:text-accent transition-colors">Privacy Policy</Link>
+            <span className="text-surface-border">|</span>
+            <Link to="/about" className="hover:text-accent transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

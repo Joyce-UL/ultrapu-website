@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { ChevronRight, Play, ArrowDown, Star } from 'lucide-react'
-import { company, socialLinks } from '../data/company'
+import { ChevronRight, ArrowDown, Award, Globe, Factory, Shield } from 'lucide-react'
+import { company } from '../data/company'
 
-// Animated counter component
+// Animated counter component with improved animation
 function CountUp({ target, duration = 2000, suffix = "" }) {
   const [count, setCount] = useState(0)
   const [started, setStarted] = useState(false)
@@ -16,7 +16,7 @@ function CountUp({ target, duration = 2000, suffix = "" }) {
           setStarted(true)
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     )
     if (ref.current) observer.observe(ref.current)
     return () => observer.disconnect()
@@ -39,167 +39,301 @@ function CountUp({ target, duration = 2000, suffix = "" }) {
   }, [started, target, duration])
 
   return (
-    <span ref={ref}>
-      {count}
-      {suffix}
+    <span ref={ref} className="tabular-nums">
+      {count}{suffix}
     </span>
+  )
+}
+
+// Floating decorative element component
+function FloatingDecor({ className, delay = 0 }) {
+  return (
+    <div
+      className={`absolute rounded-full ${className}`}
+      style={{
+        animation: `float 6s ease-in-out infinite`,
+        animationDelay: `${delay}s`,
+      }}
+    />
+  )
+}
+
+// Animated line decoration
+function AnimatedLine({ className = "" }) {
+  return (
+    <div className={`h-px bg-gradient-to-r from-transparent via-accent to-transparent ${className}`} />
   )
 }
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [typedText, setTypedText] = useState('')
-  const fullText = "Premium Synthetic Leather for the World"
-  const typingRef = useRef(null)
+  const [isVisible, setIsVisible] = useState(false)
+  const containerRef = useRef(null)
 
-  // Typewriter effect
+  // Entrance animation on mount
   useEffect(() => {
-    let i = 0
-    typingRef.current = setInterval(() => {
-      if (i <= fullText.length) {
-        setTypedText(fullText.slice(0, i))
-        i++
-      } else {
-        clearInterval(typingRef.current)
-      }
-    }, 50)
-    return () => clearInterval(typingRef.current)
+    const timer = setTimeout(() => setIsVisible(true), 100)
+    return () => clearTimeout(timer)
   }, [])
 
-  // Auto-rotate slides
+  // Auto-rotate slides with smooth transitions
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 3)
-    }, 6000)
+      setCurrentSlide((prev) => (prev + 1) % 4)
+    }, 7000)
     return () => clearInterval(timer)
   }, [])
 
+  // Slides configuration - more professional and focused on B2B
   const slides = [
     {
-      bg: 'bg-gradient-to-br from-primary-950 via-surface-dark to-primary-900',
-      badge: '🌟 New Arrivals',
-      title: 'Suedeking Series',
-      subtitle: '超高色牢度彩色绒面皮革，远超市面同类产品',
-      cta: 'Explore Series',
+      badge: 'Leading Manufacturer',
+      title: 'Premium Synthetic',
+      titleHighlight: 'Leather Solutions',
+      subtitle: 'Engineering high-performance PU leather, microfiber & specialty materials for global brands since 2023.',
+      cta: 'Explore Products',
       ctaLink: '/products',
-      pattern: true,
+      secondaryCta: 'Get a Quote',
+      secondaryLink: '/contact',
+      bgGradient: 'from-primary-950 via-surface-dark to-primary-900',
+      accentColor: 'accent',
+      stats: [
+        { icon: Factory, value: '10,000+', label: 'Monthly Output (m²)' },
+        { icon: Globe, value: '20+', label: 'Countries Served' },
+        { icon: Award, value: '50+', label: 'Product Series' },
+        { icon: Shield, value: '4', label: 'Certifications' },
+      ],
     },
     {
-      bg: 'bg-gradient-to-br from-surface-dark via-primary-950 to-surface-card',
-      badge: '🧤 Performance',
-      title: 'E-Color Series',
-      subtitle: '触屏导电绒面，专为智能手套而生',
-      cta: 'View Details',
+      badge: 'Innovation Hub',
+      title: 'Waterborne',
+      titleHighlight: 'Technology',
+      subtitle: 'Eco-conscious waterborne PU series with superior color fastness, meeting REACH & OEKO-TEX standards.',
+      cta: 'View Series',
       ctaLink: '/products',
-      pattern: false,
+      secondaryCta: 'Request Samples',
+      secondaryLink: '/contact',
+      bgGradient: 'from-surface-dark via-primary-950 to-primary-900',
+      accentColor: 'accent-light',
+      stats: [
+        { icon: Shield, value: 'REACH', label: 'Certified' },
+        { icon: Globe, value: '0', label: 'VOC Emissions' },
+        { icon: Award, value: 'A+', label: 'Safety Rating' },
+        { icon: Globe, value: '100%', label: 'Water-Based' },
+      ],
     },
     {
-      bg: 'bg-gradient-to-br from-primary-900 via-surface-dark to-primary-950',
-      badge: '🏭 Leading Supplier',
-      title: 'Premium Microfiber',
-      subtitle: '40% PU + 60% Nylon 超细纤维结构',
-      cta: 'Get Samples',
+      badge: 'Industry Solutions',
+      title: 'Performance',
+      titleHighlight: 'Materials',
+      subtitle: 'From automotive interiors to professional gloves, our materials deliver exceptional durability & comfort.',
+      cta: 'View Applications',
+      ctaLink: '/applications',
+      secondaryCta: 'Contact Sales',
+      secondaryLink: '/contact',
+      bgGradient: 'from-primary-900 via-surface-dark to-primary-950',
+      accentColor: 'accent',
+      stats: [
+        { icon: Factory, value: '5', label: 'Industry Sectors' },
+        { icon: Award, value: '10+', label: 'Years Experience' },
+        { icon: Globe, value: '50+', label: 'Brand Partners' },
+        { icon: Shield, value: '99%', label: 'Quality Rate' },
+      ],
+    },
+    {
+      badge: 'Custom Solutions',
+      title: 'Tailored',
+      titleHighlight: 'Partnerships',
+      subtitle: 'Custom color matching, thickness optimization & specialized formulations to meet your unique requirements.',
+      cta: 'Start Project',
       ctaLink: '/contact',
-      pattern: true,
+      secondaryCta: 'View Capabilities',
+      secondaryLink: '/about',
+      bgGradient: 'from-primary-950 via-primary-900 to-surface-dark',
+      accentColor: 'accent-light',
+      stats: [
+        { icon: Award, value: '48h', label: 'Sample Delivery' },
+        { icon: Globe, value: '100%', label: 'Custom Colors' },
+        { icon: Factory, value: 'MOQ', label: 'Flexible' },
+        { icon: Shield, value: '24/7', label: 'Support' },
+      ],
     },
   ]
 
   const slide = slides[currentSlide]
 
   return (
-    <section className="relative h-screen min-h-[700px] overflow-hidden">
-      {/* Background Slides */}
-      {slides.map((s, i) => (
-        <div
-          key={i}
-          className={`absolute inset-0 transition-opacity duration-1000 ${s.bg} ${
-            i === currentSlide ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          {/* Texture Pattern */}
-          {s.pattern && (
-            <div className="absolute inset-0 texture-pattern opacity-30" />
-          )}
-
-          {/* Geometric shapes */}
-          <div className="absolute top-20 right-20 w-96 h-96 rounded-full bg-accent/5 blur-3xl animate-float" />
-          <div className="absolute bottom-20 left-10 w-64 h-64 rounded-full bg-accent/5 blur-2xl animate-pulse-slow" />
-          <div className="absolute top-40 left-1/4 w-2 h-2 rounded-full bg-accent animate-pulse" />
-
-          {/* Decorative lines */}
-          <svg className="absolute inset-0 w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">
-            <line x1="0" y1="30%" x2="100%" y2="70%" stroke="#C9A96E" strokeWidth="0.5" />
-            <line x1="30%" y1="100%" x2="70%" y2="0%" stroke="#C9A96E" strokeWidth="0.5" />
-          </svg>
+    <section ref={containerRef} className="relative h-screen min-h-[700px] lg:min-h-[800px] overflow-hidden">
+      {/* Background Layer */}
+      <div className={`absolute inset-0 bg-gradient-to-br ${slide.bgGradient} transition-all duration-1000 ease-out`}>
+        
+        {/* Sophisticated texture overlay */}
+        <div className="absolute inset-0 opacity-20">
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E")`,
+              opacity: 0.3,
+            }}
+          />
         </div>
-      ))}
 
-      {/* Overlay gradient */}
-      <div className="hero-gradient absolute inset-0" />
+        {/* Elegant geometric decorations */}
+        <div className="absolute top-0 right-0 w-[50vw] h-[800px] overflow-hidden">
+          <div className="absolute top-20 right-[10vw] w-96 h-96 rounded-full bg-accent/[0.03] blur-3xl animate-float" />
+          <div className="absolute top-40 right-[15vw] w-64 h-64 rounded-full bg-accent/[0.05] blur-2xl animate-pulse-slow" />
+          <div className="absolute top-60 right-[20vw] w-32 h-32 rounded-full bg-accent/[0.08] blur-xl animate-float" />
+        </div>
 
-      {/* Main Content */}
+        <div className="absolute bottom-0 left-0 w-[40vw] h-[600px] overflow-hidden">
+          <div className="absolute bottom-20 left-[5vw] w-64 h-64 rounded-full bg-accent/[0.04] blur-3xl animate-pulse-slow" />
+          <div className="absolute bottom-40 left-[10vw] w-48 h-48 rounded-full bg-accent/[0.03] blur-2xl animate-float" />
+        </div>
+
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 opacity-[0.02]" 
+          style={{
+            backgroundImage: `linear-gradient(rgba(201, 169, 110, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 169, 110, 0.3) 1px, transparent 1px)`,
+            backgroundSize: '80px 80px',
+          }}
+        />
+
+        {/* Elegant diagonal lines */}
+        <svg className="absolute inset-0 w-full h-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0%" y1="0%" x2="100%" y2="100%" stroke="#C9A96E" strokeWidth="1" />
+          <line x1="20%" y1="0%" x2="100%" y2="80%" stroke="#C9A96E" strokeWidth="0.5" />
+          <line x1="0%" y1="40%" x2="60%" y2="100%" stroke="#C9A96E" strokeWidth="0.5" />
+        </svg>
+      </div>
+
+      {/* Main Content Layer */}
       <div className="relative z-10 h-full flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="max-w-3xl">
-            {/* Badge */}
-            <div
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30 text-accent text-sm font-medium mb-6 transition-all duration-700 ${
-                currentSlide === 0 ? 'translate-x-0 opacity-100' : 'translate-x-[-20px] opacity-0'
-              }`}
-            >
-              <Star size={14} className="fill-current" />
-              {slide.badge}
-            </div>
-
-            {/* Headline */}
-            <h1
-              className={`font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-4 transition-all duration-700 ${
-                currentSlide === 0 ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-              }`}
-            >
-              {slide.title}
-              <span className="block text-gradient mt-2">{company.slogan.en}</span>
-            </h1>
-
-            {/* Subtitle */}
-            <p
-              className={`text-lg sm:text-xl text-gray-300 mb-8 max-w-xl leading-relaxed transition-all duration-700 delay-100 ${
-                currentSlide === 0 ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-              }`}
-            >
-              {slide.subtitle}
-            </p>
-
-            {/* CTA Buttons */}
-            <div
-              className={`flex flex-wrap gap-4 transition-all duration-700 delay-200 ${
-                currentSlide === 0 ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-              }`}
-            >
-              <Link to={slide.ctaLink} className="btn-primary text-base px-8 py-4">
-                {slide.cta}
-                <ChevronRight size={18} />
-              </Link>
-              <Link to="/products" className="btn-outline-white text-base px-8 py-4">
-                View All Products
-              </Link>
-            </div>
-
-            {/* Social proof mini */}
-            <div
-              className={`mt-12 flex items-center gap-6 transition-all duration-700 delay-300 ${
-                currentSlide === 0 ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-              }`}
-            >
-              <div className="flex -space-x-3">
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-accent-dark border-2 border-primary-950 flex items-center justify-center">
-                    <span className="text-xs font-bold text-primary-950">{i}</span>
-                  </div>
-                ))}
+          <div className="grid lg:grid-cols-12 gap-8 items-center">
+            
+            {/* Left Content */}
+            <div className="lg:col-span-7">
+              {/* Badge */}
+              <div
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30 text-accent text-sm font-medium mb-6 transition-all duration-700 ${
+                  isVisible ? 'translate-x-0 opacity-100' : 'translate-x-[-30px] opacity-0'
+                }`}
+              >
+                <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                {slide.badge}
               </div>
-              <div className="text-sm text-gray-400">
-                <span className="text-white font-semibold">200+</span> clients worldwide
+
+              {/* Headline */}
+              <h1
+                className={`font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-4 transition-all duration-700 delay-100 ${
+                  isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+                }`}
+              >
+                {slide.title}
+                <span className="block text-gradient mt-1">{slide.titleHighlight}</span>
+              </h1>
+
+              {/* Animated line */}
+              <div className={`mb-6 transition-all duration-700 delay-150 ${isVisible ? 'w-20 opacity-100' : 'w-0 opacity-0'}`}>
+                <AnimatedLine />
+              </div>
+
+              {/* Subtitle */}
+              <p
+                className={`text-lg sm:text-xl text-gray-300 mb-8 max-w-xl leading-relaxed transition-all duration-700 delay-200 ${
+                  isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+                }`}
+              >
+                {slide.subtitle}
+              </p>
+
+              {/* CTA Buttons */}
+              <div
+                className={`flex flex-wrap gap-4 transition-all duration-700 delay-300 ${
+                  isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+                }`}
+              >
+                <Link 
+                  to={slide.ctaLink} 
+                  className="group inline-flex items-center gap-2 px-8 py-4 bg-accent text-primary-950 font-semibold rounded-lg hover:bg-accent-light transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/20 active:scale-95"
+                >
+                  {slide.cta}
+                  <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link 
+                  to={slide.secondaryLink} 
+                  className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm"
+                >
+                  {slide.secondaryCta}
+                </Link>
+              </div>
+
+              {/* Trust indicators */}
+              <div
+                className={`mt-10 flex items-center gap-6 transition-all duration-700 delay-400 ${
+                  isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+                }`}
+              >
+                <div className="flex items-center gap-3 text-sm text-gray-400">
+                  <Shield size={16} className="text-accent" />
+                  <span>REACH & OEKO-TEX Certified</span>
+                </div>
+                <div className="w-px h-4 bg-gray-600" />
+                <div className="flex items-center gap-3 text-sm text-gray-400">
+                  <Globe size={16} className="text-accent" />
+                  <span>Global Shipping</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Visual Element - Abstract leather texture representation */}
+            <div className="lg:col-span-5 hidden lg:block">
+              <div
+                className={`relative transition-all duration-1000 delay-300 ${
+                  isVisible ? 'translate-x-0 opacity-100 scale-100' : 'translate-x-20 opacity-0 scale-95'
+                }`}
+              >
+                {/* Main visual card */}
+                <div className="relative">
+                  {/* Decorative rings */}
+                  <div className="absolute -inset-8">
+                    <div className="absolute inset-0 rounded-full border border-accent/10 animate-spin-slow" style={{ animationDuration: '30s' }} />
+                    <div className="absolute inset-4 rounded-full border border-accent/15" />
+                    <div className="absolute inset-8 rounded-full border border-accent/20" />
+                  </div>
+                  
+                  {/* Central visual */}
+                  <div className="relative bg-gradient-to-br from-surface-card to-surface-dark rounded-3xl p-8 border border-surface-border backdrop-blur-sm">
+                    {/* Stats display */}
+                    <div className="grid grid-cols-2 gap-4">
+                      {slide.stats.map((stat, index) => (
+                        <div 
+                          key={index}
+                          className="bg-primary-950/50 rounded-2xl p-4 text-center border border-surface-border/50"
+                          style={{
+                            animation: `fadeUp 0.5s ease-out forwards`,
+                            animationDelay: `${0.5 + index * 0.1}s`,
+                            opacity: 0,
+                          }}
+                        >
+                          <stat.icon size={20} className="mx-auto mb-2 text-accent/80" />
+                          <div className="text-xl font-bold text-white">{stat.value}</div>
+                          <div className="text-xs text-gray-500">{stat.label}</div>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    {/* Brand badge */}
+                    <div className="mt-6 flex items-center justify-center gap-2 text-sm text-gray-400">
+                      <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                      <span>Premium Quality Guaranteed</span>
+                    </div>
+                  </div>
+
+                  {/* Floating accent elements */}
+                  <div className="absolute -top-4 -right-4 w-16 h-16 rounded-2xl bg-accent/20 backdrop-blur-sm animate-float border border-accent/30" />
+                  <div className="absolute -bottom-4 -left-4 w-12 h-12 rounded-xl bg-accent/10 backdrop-blur-sm animate-pulse-slow border border-accent/20" />
+                </div>
               </div>
             </div>
           </div>
@@ -207,56 +341,73 @@ export default function Hero() {
       </div>
 
       {/* Slide Indicators */}
-      <div className="absolute bottom-32 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+      <div className="absolute bottom-36 left-1/2 -translate-x-1/2 z-20 flex gap-3">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrentSlide(i)}
-            className={`h-1 rounded-full transition-all duration-500 ${
-              i === currentSlide ? 'w-8 bg-accent' : 'w-4 bg-white/30 hover:bg-white/50'
+            className={`group relative h-2 rounded-full transition-all duration-500 ${
+              i === currentSlide ? 'w-12 bg-accent' : 'w-2 bg-white/30 hover:bg-white/50'
             }`}
             aria-label={`Go to slide ${i + 1}`}
-          />
+          >
+            {i === currentSlide && (
+              <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-accent whitespace-nowrap opacity-80">
+                {slides[i].badge}
+              </span>
+            )}
+          </button>
         ))}
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2">
         <span className="text-xs text-gray-400 tracking-widest uppercase">Scroll</span>
-        <ArrowDown size={16} className="text-accent" />
+        <ArrowDown size={16} className="text-accent animate-bounce" />
       </div>
 
-      {/* Quick stats bar */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 bg-primary-950/90 backdrop-blur-sm border-t border-surface-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      {/* Stats Bar */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 bg-primary-950/95 backdrop-blur-md border-t border-surface-border/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-display font-bold text-accent">
-                <CountUp target={2023} suffix="" />+
+            <div className="text-center group">
+              <div className="text-2xl sm:text-3xl font-display font-bold text-white group-hover:text-accent transition-colors">
+                <CountUp target={company.established} suffix="" />+
               </div>
-              <div className="text-xs text-gray-400 mt-1">Established</div>
+              <div className="text-xs text-gray-500 mt-1">Established</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-display font-bold text-accent">
+            <div className="text-center group">
+              <div className="text-2xl sm:text-3xl font-display font-bold text-white group-hover:text-accent transition-colors">
                 <CountUp target={50} suffix="+" />
               </div>
-              <div className="text-xs text-gray-400 mt-1">Product Series</div>
+              <div className="text-xs text-gray-500 mt-1">Product Series</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-display font-bold text-accent">
+            <div className="text-center group">
+              <div className="text-2xl sm:text-3xl font-display font-bold text-white group-hover:text-accent transition-colors">
                 <CountUp target={20} suffix="+" />
               </div>
-              <div className="text-xs text-gray-400 mt-1">Countries Served</div>
+              <div className="text-xs text-gray-500 mt-1">Countries Served</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-display font-bold text-accent">
+            <div className="text-center group">
+              <div className="text-2xl sm:text-3xl font-display font-bold text-white group-hover:text-accent transition-colors">
                 4
               </div>
-              <div className="text-xs text-gray-400 mt-1">Certifications</div>
+              <div className="text-xs text-gray-500 mt-1">Certifications</div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* CSS for spinning animation */}
+      <style>{`
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 30s linear infinite;
+        }
+      `}</style>
     </section>
   )
 }
