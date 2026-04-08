@@ -134,7 +134,7 @@ export default function Home() {
               </div>
             </AnimateSection>
 
-            {/* Feature 2: Custom Solutions */}
+            {/* Feature 2: Professional R&D */}
             <AnimateSection delay={100} direction="up">
               <div className="group relative h-full bg-white/70 backdrop-blur-md rounded-2xl p-8 border border-primary-100/50 shadow-sm hover:shadow-xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1">
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -143,16 +143,16 @@ export default function Home() {
                     <Award size={28} className="text-accent" />
                   </div>
                   <h3 className="font-display font-bold text-xl mb-3 text-primary-950 group-hover:text-accent transition-colors">
-                    Custom Solutions
+                    Professional R&D
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed">
-                    Colors, thickness, and textures fully customizable to meet your specific requirements.
+                    Dedicated R&D team developing innovative leather solutions with cutting-edge technology.
                   </p>
                 </div>
               </div>
             </AnimateSection>
 
-            {/* Feature 3: Fast Delivery */}
+            {/* Feature 3: Flexible MOQ */}
             <AnimateSection delay={200} direction="right">
               <div className="group relative h-full bg-white/70 backdrop-blur-md rounded-2xl p-8 border border-primary-100/50 shadow-sm hover:shadow-xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1">
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -161,16 +161,16 @@ export default function Home() {
                     <Zap size={28} className="text-accent" />
                   </div>
                   <h3 className="font-display font-bold text-xl mb-3 text-primary-950 group-hover:text-accent transition-colors">
-                    Fast Delivery
+                    Flexible MOQ
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed">
-                    Sample delivery within 5 business days. Fast production lead times for urgent orders.
+                    Flexible minimum order quantities to support both small sample runs and large-scale production.
                   </p>
                 </div>
               </div>
             </AnimateSection>
 
-            {/* Feature 4: Global Logistics */}
+            {/* Feature 4: Custom Colors */}
             <AnimateSection delay={300} direction="left">
               <div className="group relative h-full bg-white/70 backdrop-blur-md rounded-2xl p-8 border border-primary-100/50 shadow-sm hover:shadow-xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1">
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -179,10 +179,10 @@ export default function Home() {
                     <Globe size={28} className="text-accent" />
                   </div>
                   <h3 className="font-display font-bold text-xl mb-3 text-primary-950 group-hover:text-accent transition-colors">
-                    Global Logistics
+                    Custom Colors
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed">
-                    International shipping to 20+ countries with reliable logistics partners worldwide.
+                    Extensive color matching services with over 500+ standard colors and custom formulations available.
                   </p>
                 </div>
               </div>
@@ -200,7 +200,7 @@ export default function Home() {
                     Technical Support
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed">
-                    Professional R&D team providing technical consultation and product development support.
+                    Professional technical team providing consultation, sample development, and after-sales support.
                   </p>
                 </div>
               </div>

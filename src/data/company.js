@@ -85,14 +85,14 @@ export const company = {
       icon: "layers",
     },
     {
-      title: "Global Logistics",
-      description: "完善的国际物流体系，确保货物安全快速送达",
-      icon: "globe",
-    },
-    {
       title: "Technical Support",
       description: "专业技术团队提供选材指导和使用建议",
       icon: "headphones",
+    },
+    {
+      title: "Eco Certified",
+      description: "通过 REACH、OEKO-Tex、GRS 等国际环保认证",
+      icon: "leaf",
     },
   ],
   values: [
