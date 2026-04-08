@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import { navLinks } from '../data/company'
+import LanguageSwitcher from './LanguageSwitcher'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -108,6 +109,11 @@ export default function Navbar() {
               >
                 Get a Quote
               </NavLink>
+
+              {/* Language Switcher */}
+              <div className="ml-4">
+                <LanguageSwitcher />
+              </div>
             </div>
 
             {/* Mobile Menu Button */}

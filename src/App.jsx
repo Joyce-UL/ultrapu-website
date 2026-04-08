@@ -21,7 +21,6 @@ export default function App() {
       <BrowserRouter>
         <div className="min-h-screen flex flex-col">
           <Navbar />
-          <LanguageSwitcher />
           <main className="flex-1">
             <Routes>
               <Route path="/" element={<Home />} />
