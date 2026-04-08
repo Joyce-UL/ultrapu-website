@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import { Globe, Check, ChevronDown } from 'lucide-react'
 import { useTranslation } from '../contexts/TranslationContext'
 import { languages } from '../translations/config'
@@ -13,8 +13,24 @@ export default function LanguageSwitcher() {
     isTranslating,
   } = useTranslation()
 
+  const dropdownRef = useRef(null)
+
+  // 点击外部关闭下拉菜单
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false)
+      }
+    }
+
+    if (showDropdown) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [showDropdown, setShowDropdown])
+
   return (
-    <div className="relative" ref={(el) => { this.dropdownRef = el }}>
+    <div className="relative" ref={dropdownRef}>
       {/* Toggle Button */}
       <button
         onClick={() => setShowDropdown(!showDropdown)}
