@@ -87,15 +87,15 @@ export default function Contact() {
   return (
     <div className="section-light">
       {/* Hero */}
-      <section className="relative bg-primary-950 py-24 sm:py-32 overflow-hidden">
+      <section className="relative bg-white py-24 sm:py-32 overflow-hidden">
         <div className="absolute inset-0 texture-pattern opacity-30" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimateSection>
             <span className="text-accent font-semibold text-sm tracking-widest uppercase mb-3 block">Get In Touch</span>
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-primary-950 mb-6">
               Contact Us
             </h1>
-            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            <p className="text-primary-600 max-w-2xl mx-auto text-lg">
               Whether you need samples, quotes, or technical advice — we're here to help. Fill out the form below or reach us directly.
             </p>
           </AnimateSection>

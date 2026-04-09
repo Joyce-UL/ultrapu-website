@@ -71,22 +71,22 @@ export default function ProductDetail() {
   return (
     <div className="section-light">
       {/* Hero */}
-      <section className="relative bg-primary-950 py-16 sm:py-24 overflow-hidden">
-        <div className="absolute inset-0 texture-pattern opacity-30" />
+      <section className="relative bg-white py-16 sm:py-24 overflow-hidden">
+        <div className="absolute inset-0 texture-pattern" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <button
             onClick={() => navigate('/products')}
-            className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-6"
+            className="flex items-center gap-2 text-primary-500 hover:text-accent transition-colors mb-6"
           >
             <ArrowLeft size={18} />
             Back to Products
           </button>
           <AnimateSection>
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-primary-950 mb-4">
               {category.name}
             </h1>
-            <p className="text-xl text-gray-400">{category.zhName}</p>
-            <p className="text-gray-500 mt-4 max-w-2xl">{category.description}</p>
+            <p className="text-xl text-primary-500">{category.zhName}</p>
+            <p className="text-primary-600 mt-4 max-w-2xl">{category.description}</p>
           </AnimateSection>
         </div>
       </section>

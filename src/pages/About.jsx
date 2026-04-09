@@ -31,16 +31,16 @@ export default function About() {
   return (
     <div className="section-light">
       {/* Hero */}
-      <section className="relative bg-primary-950 py-24 sm:py-32 overflow-hidden">
-        <div className="absolute inset-0 texture-pattern opacity-30" />
-        <div className="absolute top-20 right-20 w-96 h-96 rounded-full bg-accent/5 blur-3xl" />
+      <section className="relative bg-white py-24 sm:py-32 overflow-hidden">
+        <div className="absolute inset-0 texture-pattern" />
+        <div className="absolute top-20 right-20 w-96 h-96 rounded-full bg-accent/[0.06] blur-3xl" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimateSection>
             <span className="text-accent font-semibold text-sm tracking-widest uppercase mb-3 block">About Us</span>
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-primary-950 mb-6">
               Who We Are
             </h1>
-            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            <p className="text-primary-600 max-w-2xl mx-auto text-lg">
               A modern enterprise dedicated to premium synthetic leather solutions, serving clients across the globe.
             </p>
           </AnimateSection>
@@ -52,7 +52,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimateSection>
-              <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-accent/20 to-primary-950/20 flex items-center justify-center relative overflow-hidden">
+              <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-accent/10 to-primary-200 flex items-center justify-center relative overflow-hidden">
                 <div className="text-center">
                   <div className="w-32 h-32 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
                     <span className="text-6xl">🧵</span>
@@ -145,13 +145,13 @@ export default function About() {
       </section>
 
       {/* Certifications */}
-      <section className="bg-primary-950 py-16 sm:py-24">
+      <section className="bg-primary-100 py-16 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimateSection className="text-center mb-14">
             <span className="text-accent font-semibold text-sm tracking-widest uppercase mb-3 block">Certifications</span>
-            <h2 className="heading-xl text-3xl sm:text-4xl text-white mb-4">Quality You Can Trust</h2>
+            <h2 className="heading-xl text-3xl sm:text-4xl text-primary-950 mb-4">Quality You Can Trust</h2>
             <div className="line-accent mx-auto mb-6" />
-            <p className="text-gray-400 max-w-2xl mx-auto">
+            <p className="text-primary-600 max-w-2xl mx-auto">
               All our materials meet rigorous international standards for safety, quality, and environmental responsibility.
             </p>
           </AnimateSection>
@@ -161,12 +161,12 @@ export default function About() {
               const IconComp = certIconMap[cert.icon] || Shield
               return (
                 <AnimateSection key={cert.name} delay={i * 100}>
-                  <div className="card-shine bg-surface-card border border-surface-border rounded-2xl p-8 text-center card-hover">
+                  <div className="card-shine bg-white border border-primary-200 rounded-2xl p-8 text-center card-hover shadow-sm">
                     <div className="w-20 h-20 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-5">
                       <IconComp size={36} className="text-accent" />
                     </div>
-                    <h3 className="font-display font-bold text-xl text-white mb-2">{cert.name}</h3>
-                    <p className="text-gray-400 text-sm font-medium mb-2">{cert.fullName}</p>
+                    <h3 className="font-display font-bold text-xl text-primary-950 mb-2">{cert.name}</h3>
+                    <p className="text-primary-500 text-sm font-medium mb-2">{cert.fullName}</p>
                     <p className="text-gray-500 text-xs">{cert.description}</p>
                   </div>
                 </AnimateSection>

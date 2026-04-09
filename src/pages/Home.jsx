@@ -120,14 +120,13 @@ export default function Home() {
 
 
       {/* ========== Certifications ========== */}
-      <section className="section-dark py-24 lg:py-32 relative overflow-hidden">
+      <section className="bg-primary-100 py-24 lg:py-32 relative overflow-hidden">
         <div className="absolute inset-0 texture-pattern" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <SectionHeading
             label="Quality Assurance"
             title="Certified & Trusted"
             description="All products meet international quality and safety standards, ensuring reliability for every partner."
-            light={true}
           />
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-16">
@@ -135,12 +134,12 @@ export default function Home() {
               const IconComp = cert.icon === 'shield' ? Shield : cert.icon === 'leaf' ? Leaf : cert.icon === 'recycle' ? Leaf : CheckCircle2
               return (
                 <AnimateSection key={cert.name} delay={i * 100}>
-                  <div className="card-shine bg-surface-card border border-surface-border rounded-2xl p-8 text-center card-hover h-full flex flex-col items-center justify-center">
+                  <div className="card-shine bg-white border border-primary-200 rounded-2xl p-8 text-center card-hover h-full flex flex-col items-center justify-center shadow-sm">
                     <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-5">
                       <IconComp size={30} className="text-accent" />
                     </div>
-                    <h3 className="font-display font-bold text-xl text-white mb-2">{cert.name}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">{cert.description}</p>
+                    <h3 className="font-display font-bold text-xl text-primary-950 mb-2">{cert.name}</h3>
+                    <p className="text-primary-500 text-sm leading-relaxed">{cert.description}</p>
                   </div>
                 </AnimateSection>
               )

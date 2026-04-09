@@ -38,15 +38,15 @@ export default function Patterns() {
   return (
     <div className="section-light">
       {/* Hero */}
-      <section className="relative bg-primary-950 py-16 sm:py-24 overflow-hidden">
-        <div className="absolute inset-0 texture-pattern opacity-30" />
+      <section className="relative bg-white py-16 sm:py-24 overflow-hidden">
+        <div className="absolute inset-0 texture-pattern" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimateSection>
             <span className="text-accent font-semibold text-sm tracking-widest uppercase mb-3 block">Texture Collection</span>
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-primary-950 mb-4">
               Available Patterns
             </h1>
-            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            <p className="text-primary-600 max-w-2xl mx-auto text-lg">
               Explore our comprehensive collection of surface textures and patterns. Custom patterns available upon request.
             </p>
           </AnimateSection>
@@ -79,13 +79,13 @@ export default function Patterns() {
       </section>
 
       {/* Custom Pattern CTA */}
-      <section className="bg-primary-950 py-16">
+      <section className="bg-primary-100 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimateSection>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold text-white mb-4">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-primary-950 mb-4">
               Need a Custom Pattern?
             </h2>
-            <p className="text-gray-400 mb-8">
+            <p className="text-primary-600 mb-8">
               We can create custom embossed patterns based on your design. Send us your pattern requirements.
             </p>
             <a href="/contact" className="inline-flex items-center gap-2 bg-accent text-primary-950 font-semibold py-3 px-6 rounded-lg hover:bg-accent/90 transition-colors">

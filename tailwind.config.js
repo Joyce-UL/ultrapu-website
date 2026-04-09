@@ -8,17 +8,17 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#FAFAFA',
-          100: '#F5F5F5',
-          200: '#EEEEEE',
+          50: '#FFFFFF',
+          100: '#F8F8F8',
+          200: '#F0F0F0',
           300: '#E0E0E0',
-          400: '#BDBDBD',
+          400: '#C0C0C0',
           500: '#9E9E9E',
-          600: '#757575',
-          700: '#616161',
-          800: '#424242',
-          900: '#212121',
-          950: '#0D0D0D',
+          600: '#737373',
+          700: '#525252',
+          800: '#404040',
+          900: '#262626',
+          950: '#1A1A1A',
         },
         accent: {
           DEFAULT: '#FFCC00',
@@ -26,9 +26,9 @@ export default {
           dark: '#E5B800',
         },
         surface: {
-          dark: '#1A1A1A',
+          dark: '#404040',
           card: '#FFFFFF',
-          border: '#404040',
+          border: '#E8E8E8',
         }
       },
       fontFamily: {

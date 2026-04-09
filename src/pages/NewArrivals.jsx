@@ -23,19 +23,19 @@ export default function NewArrivals() {
   return (
     <div className="section-light">
       {/* Hero */}
-      <section className="relative bg-primary-950 py-24 sm:py-32 overflow-hidden">
-        <div className="absolute inset-0 texture-pattern opacity-30" />
-        <div className="absolute top-20 right-20 w-96 h-96 rounded-full bg-accent/5 blur-3xl animate-pulse" />
+      <section className="relative bg-white py-24 sm:py-32 overflow-hidden">
+        <div className="absolute inset-0 texture-pattern" />
+        <div className="absolute top-20 right-20 w-96 h-96 rounded-full bg-accent/[0.06] blur-3xl animate-pulse" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimateSection>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30 text-accent text-sm font-medium mb-6">
               <Sparkles size={16} className="fill-current" />
               Just Released
             </div>
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-primary-950 mb-6">
               New Arrivals
             </h1>
-            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            <p className="text-primary-600 max-w-2xl mx-auto text-lg">
               Discover our latest material innovations — fresh colors, new technologies, and upgraded performance.
             </p>
           </AnimateSection>

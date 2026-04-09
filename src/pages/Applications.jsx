@@ -23,15 +23,15 @@ export default function Applications() {
   return (
     <div className="section-light">
       {/* Hero */}
-      <section className="relative bg-primary-950 py-24 sm:py-32 overflow-hidden">
-        <div className="absolute inset-0 texture-pattern opacity-30" />
+      <section className="relative bg-white py-24 sm:py-32 overflow-hidden">
+        <div className="absolute inset-0 texture-pattern" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimateSection>
             <span className="text-accent font-semibold text-sm tracking-widest uppercase mb-3 block">Industry Solutions</span>
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-primary-950 mb-6">
               Application Fields
             </h1>
-            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            <p className="text-primary-600 max-w-2xl mx-auto text-lg">
               Our materials serve diverse industries — from fashion to automotive, from sports to professional protection.
             </p>
           </AnimateSection>
@@ -120,13 +120,13 @@ export default function Applications() {
       </section>
 
       {/* CTA */}
-      <section className="bg-primary-950 py-16">
+      <section className="bg-primary-100 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimateSection>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-primary-950 mb-4">
               Not Sure Which Material to Choose?
             </h2>
-            <p className="text-gray-400 text-lg mb-8">
+            <p className="text-primary-600 text-lg mb-8">
               Our technical team can recommend the best material based on your specific application, performance requirements, and budget.
             </p>
             <Link to="/contact" className="btn-primary text-base px-8 py-4">

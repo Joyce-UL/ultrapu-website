@@ -31,16 +31,16 @@ export default function Products() {
   return (
     <div className="section-light">
       {/* Page Hero */}
-      <section className="relative bg-primary-950 py-24 sm:py-32 overflow-hidden">
-        <div className="absolute inset-0 texture-pattern opacity-30" />
-        <div className="absolute top-20 right-20 w-96 h-96 rounded-full bg-accent/5 blur-3xl" />
+      <section className="relative bg-white py-24 sm:py-32 overflow-hidden">
+        <div className="absolute inset-0 texture-pattern" />
+        <div className="absolute top-20 right-20 w-96 h-96 rounded-full bg-accent/[0.06] blur-3xl" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimateSection>
             <span className="text-accent font-semibold text-sm tracking-widest uppercase mb-3 block">Our Catalog</span>
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-primary-950 mb-6">
               Product Series
             </h1>
-            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            <p className="text-primary-600 max-w-2xl mx-auto text-lg">
               From classic PU leather to cutting-edge specialty materials — explore our complete range designed for every industry.
             </p>
           </AnimateSection>
@@ -128,13 +128,13 @@ export default function Products() {
       </section>
 
       {/* CTA */}
-      <section className="bg-primary-950 py-16">
+      <section className="bg-primary-100 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimateSection>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-primary-950 mb-4">
               Need Custom Material?
             </h2>
-            <p className="text-gray-400 text-lg mb-8">
+            <p className="text-primary-600 text-lg mb-8">
               We offer custom color matching, thickness adjustment, and functional finishes. Contact us to discuss your specific requirements.
             </p>
             <Link to="/contact" className="btn-primary text-base px-8 py-4">
