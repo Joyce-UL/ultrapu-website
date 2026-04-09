@@ -1,9 +1,21 @@
 import React, { useState } from 'react'
-import { useLanguage } from '../contexts/LanguageContext'
 import { Send, Check } from 'lucide-react'
 
+const labels = {
+  company: 'Company Name',
+  contact: 'Contact Person',
+  phone: 'Phone Number',
+  email: 'Email Address',
+  thickness: 'Thickness',
+  color: 'Color Preference',
+  category: 'Product Category',
+  usage: 'Intended Use',
+  quantity: 'Estimated Quantity',
+  requirements: 'Special Requirements',
+  submit: 'Submit Inquiry'
+}
+
 export default function InquiryForm({ category = '' }) {
-  const { t } = useLanguage()
   const [submitted, setSubmitted] = useState(false)
   const [formData, setFormData] = useState({
     company: '',
@@ -20,7 +32,6 @@ export default function InquiryForm({ category = '' }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // 这里可以添加实际的表单提交逻辑
     console.log('Form submitted:', formData)
     setSubmitted(true)
   }
@@ -35,18 +46,18 @@ export default function InquiryForm({ category = '' }) {
         <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
           <Check size={32} className="text-green-600" />
         </div>
-        <h3 className="text-xl font-semibold text-green-800 mb-2">Inquiry Submitted!</h3>
-        <p className="text-green-600">We'll contact you within 24 hours.</p>
+        <h3 className="text-xl font-semibold text-green-800 mb-2">Thank You!</h3>
+        <p className="text-green-600">Your inquiry has been submitted. We'll get back to you within 24 hours.</p>
       </div>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm border border-primary-200 p-6 sm:p-8">
-      <div className="grid sm:grid-cols-2 gap-6">
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <div className="grid sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            {t('inquiry.company')} *
+          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+            {labels.company} *
           </label>
           <input
             type="text"
@@ -54,14 +65,14 @@ export default function InquiryForm({ category = '' }) {
             required
             value={formData.company}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-primary-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent"
+            className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all"
             placeholder="Your company name"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            {t('inquiry.contact')} *
+          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+            {labels.contact} *
           </label>
           <input
             type="text"
@@ -69,14 +80,14 @@ export default function InquiryForm({ category = '' }) {
             required
             value={formData.contact}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-primary-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent"
+            className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all"
             placeholder="Contact person name"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            {t('inquiry.phone')} *
+          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+            {labels.phone} *
           </label>
           <input
             type="tel"
@@ -84,14 +95,14 @@ export default function InquiryForm({ category = '' }) {
             required
             value={formData.phone}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-primary-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent"
-            placeholder="+86 xxx xxxx xxxx"
+            className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all"
+            placeholder="+1 234 567 8900"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            {t('inquiry.email')} *
+          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+            {labels.email} *
           </label>
           <input
             type="email"
@@ -99,20 +110,20 @@ export default function InquiryForm({ category = '' }) {
             required
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-primary-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent"
+            className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all"
             placeholder="email@company.com"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            {t('inquiry.thickness')}
+          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+            {labels.thickness}
           </label>
           <select
             name="thickness"
             value={formData.thickness}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-primary-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent"
+            className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all"
           >
             <option value="">Select thickness</option>
             <option value="0.6mm">0.6mm</option>
@@ -125,42 +136,42 @@ export default function InquiryForm({ category = '' }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            {t('inquiry.color')}
+          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+            {labels.color}
           </label>
           <input
             type="text"
             name="color"
             value={formData.color}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-primary-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent"
-            placeholder="e.g., Black, Brown, Custom"
+            className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all"
+            placeholder="Black, Brown, Navy, etc."
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            {t('inquiry.category')}
+          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+            {labels.category}
           </label>
           <input
             type="text"
             name="category"
             value={formData.category}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-primary-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent bg-primary-50"
+            className="w-full px-4 py-2.5 border border-gray-200 rounded-lg bg-gray-50 text-gray-600"
             readOnly
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            {t('inquiry.usage')}
+          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+            {labels.usage}
           </label>
           <select
             name="usage"
             value={formData.usage}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-primary-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent"
+            className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all"
           >
             <option value="">Select usage</option>
             <option value="Footwear">Footwear</option>
@@ -174,41 +185,45 @@ export default function InquiryForm({ category = '' }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            {t('inquiry.quantity')}
+          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+            {labels.quantity}
           </label>
           <input
             type="text"
             name="quantity"
             value={formData.quantity}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-primary-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent"
+            className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all"
             placeholder="e.g., 1000 yards"
-          />
-        </div>
-
-        <div className="sm:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            {t('inquiry.requirements')}
-          </label>
-          <textarea
-            name="requirements"
-            rows={4}
-            value={formData.requirements}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-primary-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent"
-            placeholder="Any special requirements, pattern preferences, certification needs, etc."
           />
         </div>
       </div>
 
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          {labels.requirements}
+        </label>
+        <textarea
+          name="requirements"
+          rows={4}
+          value={formData.requirements}
+          onChange={handleChange}
+          className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all"
+          placeholder="Please describe any special requirements, pattern preferences, certification needs, sample requests, etc."
+        />
+      </div>
+
       <button
         type="submit"
-        className="w-full mt-6 flex items-center justify-center gap-2 bg-accent text-primary-950 font-semibold py-3 px-6 rounded-lg hover:bg-accent/90 transition-colors"
+        className="w-full flex items-center justify-center gap-2 bg-gray-900 text-white font-semibold py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors"
       >
         <Send size={18} />
-        {t('inquiry.submit')}
+        {labels.submit}
       </button>
+
+      <p className="text-xs text-gray-500 text-center">
+        By submitting this form, you agree to be contacted by our sales team regarding your inquiry.
+      </p>
     </form>
   )
 }
