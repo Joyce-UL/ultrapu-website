@@ -11,12 +11,14 @@ import Applications from './pages/Applications'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import { TranslationProvider } from './contexts/TranslationContext'
+import { LanguageProvider } from './contexts/LanguageContext'
 import ProductDetail from './pages/ProductDetail'
 import Patterns from './pages/Patterns'
 import LanguageSwitcher from './components/LanguageSwitcher'
 
 export default function App() {
   return (
+    <LanguageProvider>
     <TranslationProvider>
       <BrowserRouter>
         <div className="min-h-screen flex flex-col">
@@ -39,5 +41,6 @@ export default function App() {
         </div>
       </BrowserRouter>
     </TranslationProvider>
+    </LanguageProvider>
   )
 }
