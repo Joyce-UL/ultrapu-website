@@ -29,33 +29,31 @@ const productImages = [
 
 // Technical specifications data
 const technicalSpecs = {
-  'Physical Properties': [
+  'Fabric Information': [
     { property: 'Thickness', value: '0.6mm - 1.4mm', standard: 'ASTM D1777' },
     { property: 'Width', value: '54" (137cm)', standard: 'ASTM D3774' },
+    { property: 'Composition', value: '100% Polyurethane on Polyester backing', standard: '' },
     { property: 'Weight', value: '280-450 g/m²', standard: 'ASTM D3776' },
-    { property: 'Density', value: '0.9-1.1 g/cm³', standard: 'ASTM D792' },
+    { property: 'MOQ', value: '500 yards / color', standard: '' },
   ],
-  'Mechanical Properties': [
-    { property: 'Tensile Strength', value: '≥15 MPa', standard: 'ASTM D638' },
-    { property: 'Elongation at Break', value: '≥150%', standard: 'ASTM D638' },
-    { property: 'Tear Strength', value: '≥30 N/mm', standard: 'ASTM D624' },
-    { property: 'Seam Strength', value: '≥40 N', standard: 'ASTM D1683' },
-  ],
-  'Durability Properties': [
+  'Physical Properties': [
     { property: 'Abrasion Resistance', value: '≥50,000 cycles', standard: 'ASTM D4060' },
-    { property: 'Flex Cracking', value: '≥100,000 cycles', standard: 'ASTM D2097' },
+    { property: 'Tear Strength', value: '≥30 N/mm', standard: 'ASTM D624' },
+    { property: 'Tensile Strength', value: '≥15 MPa', standard: 'ASTM D638' },
     { property: 'Hydrolysis Resistance', value: '72 hrs @ 70°C', standard: 'ISO 1419' },
-    { property: 'UV Resistance', value: 'Grade 4-5', standard: 'ASTM D4329' },
-  ],
-  'Performance Properties': [
-    { property: 'Color Fastness to Rubbing', value: 'Grade 4-5 (Dry/Wet)', standard: 'AATCC 8/AATCC 16' },
-    { property: 'Color Fastness to Light', value: 'Grade 4-5', standard: 'AATCC 16E' },
     { property: 'Flame Resistance', value: 'Pass FMVSS 302', standard: 'DOT CMVSS 302' },
-    { property: 'VOC Emission', value: '<50 μg/m³', standard: 'VDA 270' },
+    { property: 'Cut Resistance', value: 'Grade 3+', standard: 'EN ISO 13997' },
+    { property: 'UV Resistance (Yellowing)', value: 'Grade 4-5', standard: 'ASTM D4329' },
   ],
-  'Environmental Properties': [
+  'Color Fastness': [
+    { property: 'Washing Fastness', value: 'Grade 4-5', standard: 'ISO 105-C06' },
+    { property: 'Light Fastness', value: 'Grade 4-5', standard: 'AATCC 16E' },
+    { property: 'Rubbing Fastness', value: 'Grade 4-5 (Dry/Wet)', standard: 'AATCC 8/AATCC 16' },
+    { property: 'Perspiration Fastness', value: 'Grade 4-5', standard: 'ISO 105-E04' },
+  ],
+  'Environmental & Compliance': [
     { property: 'Formaldehyde Content', value: '<20 ppm', standard: 'ISO 17226' },
-    { property: 'pH Value', value: '5.5-7.5', standard: 'ISO 4045' },
+    { property: 'VOC Emission', value: '<50 μg/m³', standard: 'VDA 270' },
     { property: 'Recyclable Content', value: 'Available (GRS Certified)', standard: 'GRS v5.0' },
     { property: 'REACH Compliance', value: 'Full Compliance', standard: 'EU Regulation' },
   ],
@@ -478,7 +476,7 @@ export default function ProductDetail() {
                                 <span className="text-sm font-medium text-gray-900">{spec.property}</span>
                               </div>
                               <span className="text-lg font-semibold text-gray-900">{spec.value}</span>
-                              <p className="text-xs text-gray-400 mt-1">{spec.standard}</p>
+                              {spec.standard && <p className="text-xs text-gray-400 mt-1">{spec.standard}</p>}
                             </div>
                           ))}
                         </div>
@@ -492,81 +490,57 @@ export default function ProductDetail() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 bg-white">
+      {/* Inquiry Section - placed prominently after specs */}
+      <section className="py-16 lg:py-20 bg-white" id="inquiry">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimateSection>
-            <div className="text-center mb-12">
-              <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Why Choose {product.name}?</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Our materials are engineered to meet the highest standards of quality, durability, and performance.
-              </p>
+            <div className="text-center mb-10">
+              <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">Request a Sample or Quote</h2>
+              <p className="text-gray-500 max-w-xl mx-auto">Tell us your requirements and we'll get back to you within 24 hours.</p>
             </div>
           </AnimateSection>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {product.features.map((feature, idx) => (
-              <AnimateSection key={idx} delay={idx * 50}>
-                <div className="p-6 rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-md transition-all">
-                  <div 
-                    className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
-                    style={{ backgroundColor: `${product.color}15` }}
-                  >
-                    <Check size={24} style={{ color: product.color }} />
-                  </div>
-                  <h3 className="font-semibold text-gray-900 mb-2">{feature}</h3>
-                </div>
-              </AnimateSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Inquiry Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" id="inquiry">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 items-start">
             {/* Left - Contact Info */}
             <AnimateSection>
-              <div className="text-white">
-                <h2 className="text-3xl lg:text-4xl font-bold mb-4">Ready to Get Started?</h2>
-                <p className="text-white/70 mb-8 text-lg">
-                  Contact our sales team for product samples, custom specifications, or detailed quotations. We typically respond within 24 hours.
+              <div className="bg-gray-900 rounded-2xl p-8 text-white h-full">
+                <h3 className="text-xl font-bold mb-4">Get in Touch</h3>
+                <p className="text-white/70 mb-8">
+                  Contact our sales team for product samples, custom specifications, or detailed quotations.
                 </p>
 
-                <div className="space-y-4 mb-8">
+                <div className="space-y-5 mb-8">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center">
-                      <Mail size={20} className="text-white/70" />
+                    <div className="w-11 h-11 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                      <Mail size={18} className="text-white/70" />
                     </div>
                     <div>
-                      <p className="text-sm text-white/50">Email</p>
+                      <p className="text-xs text-white/50 mb-0.5">Email</p>
                       <p className="font-medium">info@ultrapu.com</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center">
-                      <Phone size={20} className="text-white/70" />
+                    <div className="w-11 h-11 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                      <Phone size={18} className="text-white/70" />
                     </div>
                     <div>
-                      <p className="text-sm text-white/50">Phone</p>
+                      <p className="text-xs text-white/50 mb-0.5">Phone</p>
                       <p className="font-medium">+86 769-8888-8888</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center">
-                      <MapPin size={20} className="text-white/70" />
+                    <div className="w-11 h-11 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                      <MapPin size={18} className="text-white/70" />
                     </div>
                     <div>
-                      <p className="text-sm text-white/50">Address</p>
+                      <p className="text-xs text-white/50 mb-0.5">Address</p>
                       <p className="font-medium">Dongguan, Guangdong, China</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-4 rounded-lg bg-white/5 border border-white/10">
+                <div className="p-4 rounded-xl bg-white/5 border border-white/10">
                   <p className="text-sm text-white/60">
-                    <strong className="text-white">Sample Service:</strong> We offer free samples (A4 size) for quality evaluation. Custom samples with specific colors or specifications are available upon request.
+                    <strong className="text-white">Free Samples:</strong> We offer free A4-size samples for quality evaluation. Custom samples with specific colors or specs are available on request.
                   </p>
                 </div>
               </div>
@@ -574,9 +548,9 @@ export default function ProductDetail() {
 
             {/* Right - Inquiry Form */}
             <AnimateSection delay={100}>
-              <div className="bg-white rounded-2xl p-6 lg:p-8 shadow-xl">
+              <div className="bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-gray-100">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Send Us an Inquiry</h3>
-                <p className="text-gray-600 mb-6">Fill out the form below and we'll get back to you shortly.</p>
+                <p className="text-gray-500 mb-6">Fill out the form below and we'll get back to you shortly.</p>
                 <InquiryForm category={product.name} />
               </div>
             </AnimateSection>
