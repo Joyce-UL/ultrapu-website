@@ -7,3 +7,14 @@ Sitemap: https://www.ultrapu.com/sitemap.xml
 
 # Disallow admin area
 Disallow: /admin/
+
+# Disallow unnecessary files
+Disallow: /*.json$
+Disallow: /*.txt$
+
+# Allow important crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
