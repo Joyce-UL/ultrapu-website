@@ -15,11 +15,20 @@ export default function ProductCard({ product, type = 'material' }) {
       {/* Image/Color area */}
       <div
         className="h-48 lg:h-52 relative flex items-center justify-center overflow-hidden"
-        style={{ backgroundColor: product.color + '12' }}
+        style={{ backgroundColor: product.image ? '#f0f0f0' : product.color + '12' }}
       >
-        <div className="text-7xl transition-transform duration-500 group-hover:scale-110">
-          {emoji}
-        </div>
+        {product.image ? (
+          <img 
+            src={product.image} 
+            alt={product.name} 
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            loading="lazy"
+          />
+        ) : (
+          <div className="text-7xl transition-transform duration-500 group-hover:scale-110">
+            {emoji}
+          </div>
+        )}
         {/* Hover overlay */}
         <div className="absolute inset-0 bg-primary-950/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <span className="text-white font-medium flex items-center gap-2 text-sm">
