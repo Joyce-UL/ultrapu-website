@@ -14,13 +14,20 @@ import { TranslationProvider } from './contexts/TranslationContext'
 import { LanguageProvider } from './contexts/LanguageContext'
 import ProductDetail from './pages/ProductDetail'
 import Patterns from './pages/Patterns'
-import LanguageSwitcher from './components/LanguageSwitcher'
+import { AuthProvider, useAuth } from './admin/AuthContext'
+import AdminLogin from './admin/AdminLogin'
+import AdminLayout from './admin/AdminLayout'
 
-export default function App() {
+function AdminGuard() {
+  const { user } = useAuth()
+  if (!user) return <AdminLogin />
+  return <AdminLayout />
+}
+
+function PublicSite() {
   return (
     <LanguageProvider>
-    <TranslationProvider>
-      <BrowserRouter>
+      <TranslationProvider>
         <div className="min-h-screen flex flex-col">
           <Navbar />
           <main className="flex-1">
@@ -39,8 +46,20 @@ export default function App() {
           <SocialButtons />
           <ScrollToTop />
         </div>
-      </BrowserRouter>
-    </TranslationProvider>
+      </TranslationProvider>
     </LanguageProvider>
+  )
+}
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/admin/*" element={<AdminGuard />} />
+          <Route path="/*" element={<PublicSite />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   )
 }

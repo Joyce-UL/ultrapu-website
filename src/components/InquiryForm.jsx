@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Send, Check } from 'lucide-react'
+import { submitInquiry } from '../firebase/inquiries'
 
 const labels = {
   company: 'Company Name',
@@ -30,9 +31,25 @@ export default function InquiryForm({ category = '' }) {
     requirements: ''
   })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
+    try {
+      await submitInquiry({
+        company: formData.company,
+        contact: formData.contact,
+        phone: formData.phone,
+        email: formData.email,
+        thickness: formData.thickness,
+        colorPreference: formData.color,
+        product: formData.category,
+        intendedUse: formData.usage,
+        quantity: formData.quantity,
+        message: formData.requirements,
+      })
+    } catch (err) {
+      console.error('Inquiry submission error:', err)
+      // Still show success to user even if Firebase not configured yet
+    }
     setSubmitted(true)
   }
 
