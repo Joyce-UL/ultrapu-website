@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { Menu, X, ChevronDown } from 'lucide-react'
-import { navLinks } from '../data/company'
+import { useLanguage } from '../contexts/LanguageContext'
 import LanguageSwitcher from './LanguageSwitcher'
 
 export default function Navbar() {
+  const { t } = useLanguage()
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [activeDropdown, setActiveDropdown] = useState(null)
   const dropdownRef = useRef(null)
   const location = useLocation()
 
@@ -21,7 +21,6 @@ export default function Navbar() {
 
   useEffect(() => {
     setMobileOpen(false)
-    setActiveDropdown(null)
   }, [location])
 
   useEffect(() => {
@@ -60,41 +59,73 @@ export default function Navbar() {
 
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-1" ref={dropdownRef}>
-              {navLinks.map((link) => (
-                <div key={link.path} className="relative">
-                  {link.children ? (
-                    <button
-                      onClick={() => setActiveDropdown(activeDropdown === link.label ? null : link.label)}
-                      className={`flex items-center gap-1 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 hover:bg-primary-100 ${
-                        activeDropdown === link.label ? 'text-accent' : 'text-primary-700'
-                      }`}
-                    >
-                      {link.label}
-                      <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === link.label ? 'rotate-180' : ''}`} />
-                    </button>
-                  ) : (
-                    <NavLink
-                      to={link.path}
-                      className={({ isActive }) =>
-                        `px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 hover:bg-primary-100 ${
-                          isActive
-                            ? 'text-accent bg-primary-100'
-                            : 'text-primary-700 hover:text-primary-950'
-                        }`
-                      }
-                    >
-                      {link.label}
-                    </NavLink>
-                  )}
-                </div>
-              ))}
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 hover:bg-primary-100 ${
+                    isActive ? 'text-accent bg-primary-100' : 'text-primary-700 hover:text-primary-950'
+                  }`
+                }
+              >
+                {t('nav.home')}
+              </NavLink>
+              <NavLink
+                to="/products"
+                className={({ isActive }) =>
+                  `px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 hover:bg-primary-100 ${
+                    isActive ? 'text-accent bg-primary-100' : 'text-primary-700 hover:text-primary-950'
+                  }`
+                }
+              >
+                {t('nav.products')}
+              </NavLink>
+              <NavLink
+                to="/new-arrivals"
+                className={({ isActive }) =>
+                  `px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 hover:bg-primary-100 ${
+                    isActive ? 'text-accent bg-primary-100' : 'text-primary-700 hover:text-primary-950'
+                  }`
+                }
+              >
+                {t('nav.newArrivals')}
+              </NavLink>
+              <NavLink
+                to="/applications"
+                className={({ isActive }) =>
+                  `px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 hover:bg-primary-100 ${
+                    isActive ? 'text-accent bg-primary-100' : 'text-primary-700 hover:text-primary-950'
+                  }`
+                }
+              >
+                {t('nav.applications')}
+              </NavLink>
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  `px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 hover:bg-primary-100 ${
+                    isActive ? 'text-accent bg-primary-100' : 'text-primary-700 hover:text-primary-950'
+                  }`
+                }
+              >
+                {t('nav.about')}
+              </NavLink>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  `px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 hover:bg-primary-100 ${
+                    isActive ? 'text-accent bg-primary-100' : 'text-primary-700 hover:text-primary-950'
+                  }`
+                }
+              >
+                {t('nav.contact')}
+              </NavLink>
 
               {/* CTA Button */}
               <NavLink
                 to="/contact"
                 className="ml-4 btn-primary text-sm"
               >
-                Get a Quote
+                {t('nav.getQuote')}
               </NavLink>
 
               {/* Language Switcher */}
@@ -121,24 +152,69 @@ export default function Navbar() {
           }`}
         >
           <div className="bg-white border-t border-primary-200 px-4 py-4 space-y-1 shadow-lg">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.path}
-                to={link.path}
-                className={({ isActive }) =>
-                  `block px-4 py-3 rounded-lg font-medium transition-all ${
-                    isActive
-                      ? 'text-accent bg-primary-100'
-                      : 'text-primary-700 hover:text-primary-950 hover:bg-primary-100'
-                  }`
-                }
-              >
-                {link.label}
-              </NavLink>
-            ))}
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `block px-4 py-3 rounded-lg font-medium transition-all ${
+                  isActive ? 'text-accent bg-primary-100' : 'text-primary-700 hover:text-primary-950 hover:bg-primary-100'
+                }`
+              }
+            >
+              {t('nav.home')}
+            </NavLink>
+            <NavLink
+              to="/products"
+              className={({ isActive }) =>
+                `block px-4 py-3 rounded-lg font-medium transition-all ${
+                  isActive ? 'text-accent bg-primary-100' : 'text-primary-700 hover:text-primary-950 hover:bg-primary-100'
+                }`
+              }
+            >
+              {t('nav.products')}
+            </NavLink>
+            <NavLink
+              to="/new-arrivals"
+              className={({ isActive }) =>
+                `block px-4 py-3 rounded-lg font-medium transition-all ${
+                  isActive ? 'text-accent bg-primary-100' : 'text-primary-700 hover:text-primary-950 hover:bg-primary-100'
+                }`
+              }
+            >
+              {t('nav.newArrivals')}
+            </NavLink>
+            <NavLink
+              to="/applications"
+              className={({ isActive }) =>
+                `block px-4 py-3 rounded-lg font-medium transition-all ${
+                  isActive ? 'text-accent bg-primary-100' : 'text-primary-700 hover:text-primary-950 hover:bg-primary-100'
+                }`
+              }
+            >
+              {t('nav.applications')}
+            </NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                `block px-4 py-3 rounded-lg font-medium transition-all ${
+                  isActive ? 'text-accent bg-primary-100' : 'text-primary-700 hover:text-primary-950 hover:bg-primary-100'
+                }`
+              }
+            >
+              {t('nav.about')}
+            </NavLink>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                `block px-4 py-3 rounded-lg font-medium transition-all ${
+                  isActive ? 'text-accent bg-primary-100' : 'text-primary-700 hover:text-primary-950 hover:bg-primary-100'
+                }`
+              }
+            >
+              {t('nav.contact')}
+            </NavLink>
             <div className="pt-3">
               <NavLink to="/contact" className="btn-primary w-full justify-center">
-                Get a Quote
+                {t('nav.getQuote')}
               </NavLink>
             </div>
           </div>

@@ -85,13 +85,13 @@ export default function Products() {
                 onClick={() => setViewMode('grid')}
                 className={`p-2 rounded-md transition-all ${viewMode === 'grid' ? 'bg-white shadow-sm' : ''}`}
               >
-                <Grid size={16} className={viewMode === 'grid' ? 'text-accent' : 'text-gray-400'} />
+                <LayoutGrid size={16} className={viewMode === 'grid' ? 'text-accent' : 'text-gray-400'} />
               </button>
               <button
                 onClick={() => setViewMode('list')}
                 className={`p-2 rounded-md transition-all ${viewMode === 'list' ? 'bg-white shadow-sm' : ''}`}
               >
-                <LayoutGrid size={16} className={viewMode === 'list' ? 'text-accent' : 'text-gray-400'} />
+                <Grid size={16} className={viewMode === 'list' ? 'text-accent' : 'text-gray-400'} />
               </button>
             </div>
           </div>

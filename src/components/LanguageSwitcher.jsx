@@ -1,19 +1,11 @@
 import React, { useRef, useEffect } from 'react'
 import { Globe, Check, ChevronDown } from 'lucide-react'
-import { useTranslation } from '../contexts/TranslationContext'
-import { languages } from '../translations/config'
+import { useLanguage } from '../contexts/LanguageContext'
 
 export default function LanguageSwitcher() {
-  const {
-    currentLang,
-    currentLangInfo,
-    showDropdown,
-    setShowDropdown,
-    switchLanguage,
-    isTranslating,
-  } = useTranslation()
-
+  const { lang, setLang, languages, currentLangInfo } = useLanguage()
   const dropdownRef = useRef(null)
+  const [showDropdown, setShowDropdown] = React.useState(false)
 
   // 点击外部关闭下拉菜单
   useEffect(() => {
@@ -27,7 +19,7 @@ export default function LanguageSwitcher() {
       document.addEventListener('mousedown', handleClickOutside)
     }
     return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [showDropdown, setShowDropdown])
+  }, [showDropdown])
 
   return (
     <div className="relative" ref={dropdownRef}>
@@ -40,23 +32,13 @@ export default function LanguageSwitcher() {
           border border-white/20 transition-all duration-200
           text-sm font-medium min-w-[120px]
         `}
-        disabled={isTranslating}
       >
-        {isTranslating ? (
-          <>
-            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-            <span>翻译中...</span>
-          </>
-        ) : (
-          <>
-            <Globe size={16} />
-            <span className="flex-1 text-left">{currentLangInfo.flag} {currentLangInfo.native}</span>
-            <ChevronDown
-              size={14}
-              className={`transition-transform duration-200 ${showDropdown ? 'rotate-180' : ''}`}
-            />
-          </>
-        )}
+        <Globe size={16} />
+        <span className="flex-1 text-left">{currentLangInfo.flag} {currentLangInfo.native}</span>
+        <ChevronDown
+          size={14}
+          className={`transition-transform duration-200 ${showDropdown ? 'rotate-180' : ''}`}
+        />
       </button>
 
       {/* Dropdown Menu */}
@@ -66,48 +48,43 @@ export default function LanguageSwitcher() {
             absolute right-0 mt-2 w-64 max-h-80 overflow-y-auto
             bg-white rounded-xl shadow-2xl z-50
             border border-gray-100
-            animate-fadeIn
           `}
           style={{ minWidth: '200px' }}
         >
           {/* Header */}
           <div className="px-4 py-2 border-b border-gray-100 bg-gray-50/50">
             <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">
-              选择语言 / Select Language
+              Select Language
             </span>
           </div>
 
           {/* Language List */}
           <div className="py-2">
-            {languages.map((lang) => (
+            {languages.map((l) => (
               <button
-                key={lang.code}
-                onClick={() => switchLanguage(lang.code)}
+                key={l.code}
+                onClick={() => {
+                  setLang(l.code)
+                  setShowDropdown(false)
+                }}
                 className={`
                   w-full flex items-center gap-3 px-4 py-2.5
                   hover:bg-gray-50 transition-colors duration-150
-                  ${currentLang === lang.code ? 'bg-primary/5' : ''}
+                  ${lang === l.code ? 'bg-blue-50' : ''}
                 `}
               >
-                <span className="text-xl">{lang.flag}</span>
+                <span className="text-xl">{l.flag}</span>
                 <div className="flex-1 text-left">
-                  <div className={`font-medium ${currentLang === lang.code ? 'text-primary' : 'text-gray-800'}`}>
-                    {lang.native}
+                  <div className={`font-medium ${lang === l.code ? 'text-blue-600' : 'text-gray-800'}`}>
+                    {l.native}
                   </div>
-                  <div className="text-xs text-gray-500">{lang.name}</div>
+                  <div className="text-xs text-gray-500">{l.name}</div>
                 </div>
-                {currentLang === lang.code && (
-                  <Check size={16} className="text-primary" />
+                {lang === l.code && (
+                  <Check size={16} className="text-blue-600" />
                 )}
               </button>
             ))}
-          </div>
-
-          {/* Footer */}
-          <div className="px-4 py-2 border-t border-gray-100 bg-gray-50/50">
-            <span className="text-xs text-gray-400">
-              Powered by Google Translate
-            </span>
           </div>
         </div>
       )}

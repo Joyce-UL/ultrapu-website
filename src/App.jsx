@@ -10,7 +10,6 @@ import NewArrivals from './pages/NewArrivals'
 import Applications from './pages/Applications'
 import About from './pages/About'
 import Contact from './pages/Contact'
-import { TranslationProvider } from './contexts/TranslationContext'
 import { LanguageProvider } from './contexts/LanguageContext'
 import ProductDetail from './pages/ProductDetail'
 import Patterns from './pages/Patterns'
@@ -27,26 +26,24 @@ function AdminGuard() {
 function PublicSite() {
   return (
     <LanguageProvider>
-      <TranslationProvider>
-        <div className="min-h-screen flex flex-col">
-          <Navbar />
-          <main className="flex-1">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/products/:categoryId" element={<ProductDetail />} />
-              <Route path="/patterns" element={<Patterns />} />
-              <Route path="/new-arrivals" element={<NewArrivals />} />
-              <Route path="/applications" element={<Applications />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
-          </main>
-          <Footer />
-          <SocialButtons />
-          <ScrollToTop />
-        </div>
-      </TranslationProvider>
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/:categoryId" element={<ProductDetail />} />
+            <Route path="/patterns" element={<Patterns />} />
+            <Route path="/new-arrivals" element={<NewArrivals />} />
+            <Route path="/applications" element={<Applications />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+        <Footer />
+        <SocialButtons />
+        <ScrollToTop />
+      </div>
     </LanguageProvider>
   )
 }
