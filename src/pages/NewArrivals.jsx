@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Sparkles } from 'lucide-react'
 import { useInView } from 'react-intersection-observer'
@@ -20,6 +20,14 @@ function AnimateSection({ children, className = '', delay = 0 }) {
 }
 
 export default function NewArrivals() {
+  useEffect(() => {
+    document.title = 'New Arrivals - Latest Products | UltraPU'
+    const metaDesc = document.querySelector('meta[name="description"]')
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Discover our latest PU leather and microfiber products. Stay updated with new arrivals in synthetic leather materials.')
+    }
+  }, [])
+
   return (
     <div className="section-light">
       {/* Hero */}

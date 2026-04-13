@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Award, Shield, Leaf, CheckCircle, Target, Eye, Heart } from 'lucide-react'
 import { useInView } from 'react-intersection-observer'
@@ -28,6 +28,13 @@ const certIconMap = {
 }
 
 export default function About() {
+  useEffect(() => {
+    document.title = 'About Us - Leading PU Leather Manufacturer | UltraPU'
+    const metaDesc = document.querySelector('meta[name="description"]')
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Learn about Dongguan Ultra Leather, a leading manufacturer of premium PU leather and microfiber materials with 15+ years of experience in synthetic leather production.')
+    }
+  }, [])
   return (
     <div className="section-light">
       {/* Hero */}

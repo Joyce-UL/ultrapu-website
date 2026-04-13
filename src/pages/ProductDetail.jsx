@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useInView } from 'react-intersection-observer'
 import { ArrowLeft, Download, ChevronLeft, ChevronRight, Check, Send, Mail, Phone, MapPin, Globe } from 'lucide-react'
@@ -64,6 +64,14 @@ export default function ProductDetail() {
   const navigate = useNavigate()
   const [activeImage, setActiveImage] = useState(0)
   const [showContactForm, setShowContactForm] = useState(false)
+
+  useEffect(() => {
+    document.title = `Product Details - Premium ${categoryId?.replace('-', ' ')} | UltraPU`
+    const metaDesc = document.querySelector('meta[name="description"]')
+    if (metaDesc) {
+      metaDesc.setAttribute('content', `Explore ${categoryId?.replace('-', ' ')} product specifications, technical data, colors, patterns, and request a quote.`)
+    }
+  }, [categoryId])
 
   // Product data based on category ID
   const productData = {

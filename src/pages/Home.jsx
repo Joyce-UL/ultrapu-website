@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Award, Shield, Leaf, ChevronRight, Factory, Clock, CheckCircle2, Quote, Zap, Globe, Users } from 'lucide-react'
 import { useInView } from 'react-intersection-observer'
@@ -84,6 +84,14 @@ const iconMap = {
 }
 
 export default function Home() {
+  useEffect(() => {
+    document.title = 'Ultra Leather - Premium Synthetic Leather | Dongguan Ultra Leather'
+    const metaDesc = document.querySelector('meta[name="description"]')
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Dongguan Ultra Leather - Leading manufacturer and supplier of premium PU leather, microfiber leather, suede, and performance materials for footwear, bags, automotive, and gloves.')
+    }
+  }, [])
+
   return (
     <div>
       {/* Hero Section */}

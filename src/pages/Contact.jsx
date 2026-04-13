@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Mail, Phone, MapPin, MessageCircle, Clock, Send, CheckCircle, Linkedin, Youtube, Facebook, Instagram } from 'lucide-react'
 import { useInView } from 'react-intersection-observer'
 import { company, socialLinks } from '../data/company'
@@ -45,6 +45,14 @@ const inquiryTypes = [
 ]
 
 export default function Contact() {
+  useEffect(() => {
+    document.title = 'Contact Us - Get a Quote | UltraPU'
+    const metaDesc = document.querySelector('meta[name="description"]')
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Contact Dongguan Ultra Leather for product inquiries, price quotes, and technical consultation. Email: info@ultrapu.com')
+    }
+  }, [])
+
   const [formData, setFormData] = useState({
     name: '',
     company: '',

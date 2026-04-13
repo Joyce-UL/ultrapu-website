@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Filter, Grid, LayoutGrid } from 'lucide-react'
 import { useInView } from 'react-intersection-observer'
@@ -23,6 +23,14 @@ function AnimateSection({ children, className = '', delay = 0 }) {
 export default function Products() {
   const [activeTab, setActiveTab] = useState('materials')
   const [viewMode, setViewMode] = useState('grid')
+
+  useEffect(() => {
+    document.title = 'Products - Premium PU Leather & Microfiber | UltraPU'
+    const metaDesc = document.querySelector('meta[name="description"]')
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Explore our premium PU leather, microfiber suede, and synthetic leather materials for footwear, bags, automotive, and gloves. Wholesale available.')
+    }
+  }, [])
 
   const items = activeTab === 'materials'
     ? productCategories.materials

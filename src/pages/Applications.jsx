@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, CheckCircle } from 'lucide-react'
 import { useInView } from 'react-intersection-observer'
@@ -20,6 +20,14 @@ function AnimateSection({ children, className = '', delay = 0 }) {
 }
 
 export default function Applications() {
+  useEffect(() => {
+    document.title = 'Applications - Industry Solutions | UltraPU'
+    const metaDesc = document.querySelector('meta[name="description"]')
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Premium synthetic leather materials for footwear, bags, automotive, gloves, and more. Find the perfect material solution for your industry.')
+    }
+  }, [])
+
   return (
     <div className="section-light">
       {/* Hero */}
