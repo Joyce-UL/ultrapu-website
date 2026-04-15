@@ -66,12 +66,27 @@ export default function ProductDetail() {
   const [showContactForm, setShowContactForm] = useState(false)
 
   useEffect(() => {
-    document.title = `Product Details - Premium ${categoryId?.replace('-', ' ')} | UltraPU`
+    // Use product name for SEO title
+    document.title = product ? `${product.name} - Premium Synthetic Leather | UltraPU` : 'Product Details | UltraPU'
+    
+    // Update meta description
     const metaDesc = document.querySelector('meta[name="description"]')
-    if (metaDesc) {
-      metaDesc.setAttribute('content', `Explore ${categoryId?.replace('-', ' ')} product specifications, technical data, colors, patterns, and request a quote.`)
+    if (metaDesc && product) {
+      metaDesc.setAttribute('content', `${product.description.slice(0, 160)}`)
     }
-  }, [categoryId])
+    
+    // Update Open Graph tags
+    const ogTitle = document.querySelector('meta[property="og:title"]')
+    const ogDesc = document.querySelector('meta[property="og:description"]')
+    if (ogTitle && product) ogTitle.setAttribute('content', `${product.name} | UltraPU`)
+    if (ogDesc && product) ogDesc.setAttribute('content', product.description.slice(0, 200))
+    
+    // Update Twitter Card
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]')
+    const twitterDesc = document.querySelector('meta[name="twitter:description"]')
+    if (twitterTitle && product) twitterTitle.setAttribute('content', `${product.name} | UltraPU`)
+    if (twitterDesc && product) twitterDesc.setAttribute('content', product.description.slice(0, 200))
+  }, [categoryId, product])
 
   // Product data based on category ID
   const productData = {
