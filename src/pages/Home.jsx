@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Award, Shield, Leaf, ChevronRight, Factory, Clock, CheckCircle2, Quote, Zap, Globe, Users } from 'lucide-react'
 import { useInView } from 'react-intersection-observer'
+import { useLanguage } from '../contexts/LanguageContext'
 import { company } from '../data/company'
 import { productCategories, newArrivals, newsItems } from '../data/products'
 import ProductCard from '../components/ProductCard'
@@ -84,6 +85,8 @@ const iconMap = {
 }
 
 export default function Home() {
+  const { t } = useLanguage()
+  
   useEffect(() => {
     document.title = 'Ultra Leather - Premium Synthetic Leather | Dongguan Ultra Leather'
     const metaDesc = document.querySelector('meta[name="description"]')
@@ -101,9 +104,9 @@ export default function Home() {
       <section className="section-light py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            label="Our Products"
-            title="Premium Leather Materials"
-            description="From classic PU leather to cutting-edge microfiber and specialty series — we have the perfect material for every application."
+            label={t('home.ourProducts')}
+            title={t('home.productTitle')}
+            description={t('home.productDesc')}
           />
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-16">
@@ -116,7 +119,7 @@ export default function Home() {
 
           <AnimateSection className="text-center mt-14">
             <Link to="/products" className="btn-outline text-base group">
-              Explore All Products
+              {t('common.viewAll')}
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </Link>
           </AnimateSection>
@@ -132,9 +135,9 @@ export default function Home() {
         <div className="absolute inset-0 texture-pattern" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <SectionHeading
-            label="Quality Assurance"
-            title="Certified & Trusted"
-            description="All products meet international quality and safety standards, ensuring reliability for every partner."
+            label={t('home.certifications')}
+            title={t('home.certTitle')}
+            description={t('home.certDesc')}
           />
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-16">
@@ -162,14 +165,14 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <AnimateSection direction="left">
               <span className="text-accent font-semibold text-sm tracking-[0.2em] uppercase mb-4 block">
-                Why Choose Us
+                {t('home.whyChooseUs')}
               </span>
               <h2 className="heading-xl text-3xl sm:text-4xl lg:text-5xl mb-6">
-                Our Core Advantages
+                {t('home.advantages')}
               </h2>
               <div className="w-16 h-[2px] bg-accent rounded-full mb-8" />
               <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                With professional R&D capabilities, strict quality control, and a customer-first service philosophy, we deliver exceptional value to partners worldwide.
+                {t('home.advantagesDesc')}
               </p>
               <ul className="space-y-3 mb-8">
                 {['Strict quality inspection on every production batch', 'Custom colors, thickness, and textures available', 'Fast sample delivery within 5 business days', 'Dedicated technical support team'].map((item, i) => (
@@ -180,7 +183,7 @@ export default function Home() {
                 ))}
               </ul>
               <Link to="/about" className="btn-outline group">
-                Learn More About Us
+                {t('common.learnMore')}
                 <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" />
               </Link>
             </AnimateSection>
@@ -220,21 +223,21 @@ export default function Home() {
           <AnimateSection>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 text-primary-950 text-sm font-medium mb-8">
               <Quote size={14} />
-              Get Started Today
+              {t('nav.getQuote')}
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-950 mb-6 leading-tight">
-              Ready to Find Your<br className="hidden sm:block" /> Perfect Leather?
+              {t('home.readyToFind')}<br className="hidden sm:block" />
             </h2>
             <p className="text-primary-950/70 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
-              Get in touch with our team for free samples, technical consultation, or a customized quote. We're here to help you find the ideal material solution.
+              {t('home.ctaDesc')}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-primary-950 text-white font-semibold rounded-xl hover:bg-primary-900 transition-all hover:scale-[1.03] shadow-lg shadow-primary-950/20">
-                Request a Quote
+                {t('nav.getQuote')}
                 <ArrowRight size={18} />
               </Link>
               <Link to="/products" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-accent font-semibold rounded-xl hover:bg-gray-50 transition-all hover:scale-[1.03] shadow-lg shadow-white/30">
-                Browse Products
+                {t('home.browseProducts')}
               </Link>
             </div>
           </AnimateSection>

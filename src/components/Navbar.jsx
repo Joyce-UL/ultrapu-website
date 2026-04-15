@@ -23,15 +23,7 @@ export default function Navbar() {
     setMobileOpen(false)
   }, [location])
 
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setActiveDropdown(null)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
+
 
   const navBg = isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-primary-200' : 'bg-white'
 
