@@ -1,22 +1,62 @@
 # Dependencies
 node_modules/
 
-# Build output
+# Build outputs
 dist/
+dist-ssr/
 
-# IDE
-.vscode/
-.idea/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-npm-debug.log*
-
-# Environment
+# Environment files
 .env
 .env.local
 .env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local development files
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea/
+*.swp
+*.swo
+
+# Local AI memory and work files
+.workbuddy/
+**/.workbuddy/
+
+# Backup folders with timestamps
+202*/
+
+# Scripts and utilities (local only)
+deploy.ps1
+install.bat
+push-to-github.bat
+run-install.ps1
+
+# Test and temp files
+test.html
+*.zip
+
+# Documentation (optional - uncomment if you don't want these in repo)
+# DEPLOY.md
+# DEPLOYMENT_WHITEPAPER.md
+
+# Firebase (if you need local config)
+# .firebaserc
+# firebase-debug.log
+# firestore-debug.log
+
+# TypeScript cache
+*.tsbuildinfo
