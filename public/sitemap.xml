@@ -1,60 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Main Pages -->
   <url>
     <loc>https://www.ultrapu.com/</loc>
-    <lastmod>2026-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.ultrapu.com/"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ultrapu.com/?lang=zh"/>
   </url>
   <url>
     <loc>https://www.ultrapu.com/products</loc>
-    <lastmod>2026-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.ultrapu.com/products/pu-leather</loc>
-    <lastmod>2026-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.ultrapu.com/products/microfiber</loc>
-    <lastmod>2026-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.ultrapu.com/products/suedeking</loc>
-    <lastmod>2026-04-13</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://www.ultrapu.com/patterns</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.ultrapu.com/new-arrivals</loc>
-    <lastmod>2026-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.ultrapu.com/applications</loc>
-    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.ultrapu.com/about</loc>
-    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.ultrapu.com/contact</loc>
-    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://www.ultrapu.com/privacy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Language-specific versions (hreflang) -->
+  <!-- English -->
+  <url>
+    <loc>https://www.ultrapu.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ultrapu.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.ultrapu.com/zh-CN/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ultrapu.com/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Chinese Simplified -->
+  <url>
+    <loc>https://www.ultrapu.com/zh-CN/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ultrapu.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.ultrapu.com/zh-CN/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ultrapu.com/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Placeholder for other languages -->
+  <!-- 
+  <url>
+    <loc>https://www.ultrapu.com/de/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.ultrapu.com/de/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  -->
+
+  <!-- Product Pages (dynamic, add as needed) -->
+  <!--
+  <url>
+    <loc>https://www.ultrapu.com/products/pu-leather</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  -->
+
 </urlset>

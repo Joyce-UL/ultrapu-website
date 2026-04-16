@@ -10,6 +10,7 @@ import NewArrivals from './pages/NewArrivals'
 import Applications from './pages/Applications'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import Privacy from './pages/Privacy'
 import { LanguageProvider } from './contexts/LanguageContext'
 import ProductDetail from './pages/ProductDetail'
 import Patterns from './pages/Patterns'
@@ -38,6 +39,7 @@ function PublicSite() {
             <Route path="/applications" element={<Applications />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy" element={<Privacy />} />
           </Routes>
         </main>
         <Footer />
